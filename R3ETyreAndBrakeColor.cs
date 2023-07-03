@@ -1,5 +1,6 @@
 ﻿using GameReaderCommon;
 using SimHub.Plugins;
+using Simhub_R3E_Tyre_and_brake_color_plugin.Model;
 using System;
 
 namespace Simhub_R3E_Tyre_and_brake_color_plugin
@@ -7,9 +8,11 @@ namespace Simhub_R3E_Tyre_and_brake_color_plugin
     [PluginDescription("Convert tyre and brake temperature to a HEX color.")]
     [PluginAuthor("Mark Carlsen")]
     [PluginName("R3E Tyre and brake color")]
-    public class SimhubR3ETyreAndBrakeColor : IPlugin, IDataPlugin
+    public class R3ETyreAndBrakeColor : IPlugin, IDataPlugin
     {
         private readonly string _supportedGameName = "RRRE";
+        //private readonly Information _tyres = new Information();
+        private readonly Information _brakes = new Information();
 
         /// <summary>
         /// Instance of the current plugin manager
@@ -56,6 +59,7 @@ namespace Simhub_R3E_Tyre_and_brake_color_plugin
         {
             SimHub.Logging.Current.Info("Starting plugin");
             pluginManager.AddProperty<bool>("PluginRunning", this.GetType(), true);
+            pluginManager.AddProperty<string>("FrontLeftBrakeColor", this.GetType(), this._brakes.Front.Left.Color);
         }
     }
 }
