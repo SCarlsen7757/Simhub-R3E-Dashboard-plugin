@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Simhub_R3E_Tyre_and_brake_color_plugin.Model
 {
-    public class Information : ISetTemperature
+    public class BrakesInformation : ISetTemperature
     {
-        public LeftRightSet Front { get; set; } = new LeftRightSet();
-        public LeftRightSet Rear { get; set; } = new LeftRightSet();
+        public LeftRightSet<ComponentTemperatureInformation> Front { get; set; } = new LeftRightSet<ComponentTemperatureInformation>();
+        public LeftRightSet<ComponentTemperatureInformation> Rear { get; set; } = new LeftRightSet<ComponentTemperatureInformation>();
 
         public double OptimalTemperature
         {

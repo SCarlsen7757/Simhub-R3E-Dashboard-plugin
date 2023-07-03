@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simhub_R3E_Tyre_and_brake_color_plugin.Model
 {
-    public class TemperatureInformation
+    public abstract class TemperatureInformation
     {
         public TemperatureInformation() { }
 

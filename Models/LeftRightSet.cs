@@ -2,10 +2,10 @@
 
 namespace Simhub_R3E_Tyre_and_brake_color_plugin.Models
 {
-    public class LeftRightSet
+    public class LeftRightSet<T> where T : new()
     {
         public LeftRightSet() { }
-        public ComponentTemperatureInformation Left { get; set; } = new ComponentTemperatureInformation();
-        public ComponentTemperatureInformation Right { get; set; } = new ComponentTemperatureInformation();
+        public T Left { get; set; } = new T();
+        public T Right { get; set; } = new T();
     }
 }

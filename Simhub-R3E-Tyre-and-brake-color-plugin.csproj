@@ -62,9 +62,11 @@
     <Compile Include="Models\ISetTemperature.cs" />
     <Compile Include="Models\ITemperatureColor.cs" />
     <Compile Include="Models\LeftRightSet.cs" />
+    <Compile Include="Models\OMITemperatureInformation.cs" />
     <Compile Include="Models\TemperatureInformation.cs" />
     <Compile Include="Models\ComponentTemperatureInformation.cs" />
-    <Compile Include="Models\Information.cs" />
+    <Compile Include="Models\BrakesInformation.cs" />
+    <Compile Include="Models\TyresInformation.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
