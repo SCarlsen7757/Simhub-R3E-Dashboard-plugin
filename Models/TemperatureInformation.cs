@@ -37,6 +37,12 @@ namespace Simhub_R3E_Tyre_and_brake_color_plugin.Model
     public class Range
     {
         public Range() { }
+        public Range(double lower, double upper)
+        {
+            Lower = lower;
+            Upper = upper;
+        }
+
         public double Lower { get; set; }
         public double Upper { get; set; }
     }

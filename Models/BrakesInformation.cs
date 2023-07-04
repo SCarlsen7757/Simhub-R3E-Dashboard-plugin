@@ -1,4 +1,5 @@
-﻿using Simhub_R3E_Tyre_and_brake_color_plugin.Models;
+﻿using GameReaderCommon;
+using Simhub_R3E_Tyre_and_brake_color_plugin.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,13 @@ namespace Simhub_R3E_Tyre_and_brake_color_plugin.Model
     {
         public LeftRightSet<ComponentTemperatureInformation> Front { get; set; } = new LeftRightSet<ComponentTemperatureInformation>();
         public LeftRightSet<ComponentTemperatureInformation> Rear { get; set; } = new LeftRightSet<ComponentTemperatureInformation>();
-
+        public void SetTemperature(StatusDataBase data)
+        {
+            Front.Left.Temperature = data.BrakeTemperatureFrontLeft;
+            Front.Right.Temperature = data.BrakeTemperatureFrontRight;
+            Rear.Left.Temperature = data.BrakeTemperatureRearLeft;
+            Rear.Right.Temperature = data.BrakeTemperatureRearRight;
+        }
         public double OptimalTemperature
         {
             set

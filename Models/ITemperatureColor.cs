@@ -9,10 +9,10 @@ namespace Simhub_R3E_Tyre_and_brake_color_plugin.Model
     public interface ITemperatureColor
     {
         /// <summary>
-        /// Change temperature variable.
+        /// Temperature value.
         /// </summary>
         /// <param name="temperature">New temperature variable.</param>
-        void ChangeTemperature(ref double temperature);
+        double Temperature { get; set; }
 
         /// <summary>
         /// Get color in HEX format.

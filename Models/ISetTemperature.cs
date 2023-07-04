@@ -1,4 +1,5 @@
-﻿using Simhub_R3E_Tyre_and_brake_color_plugin.Model;
+﻿using GameReaderCommon;
+using Simhub_R3E_Tyre_and_brake_color_plugin.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,7 @@ namespace Simhub_R3E_Tyre_and_brake_color_plugin.Models
         Range OptimalRange { set; }
         double Max { set; }
         double Min { set; }
+
+        void SetTemperature(StatusDataBase data);
     }
 }

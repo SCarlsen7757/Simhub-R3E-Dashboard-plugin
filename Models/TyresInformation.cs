@@ -1,4 +1,5 @@
-﻿using Simhub_R3E_Tyre_and_brake_color_plugin.Model;
+﻿using GameReaderCommon;
+using Simhub_R3E_Tyre_and_brake_color_plugin.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,24 @@ namespace Simhub_R3E_Tyre_and_brake_color_plugin.Models
         public TyresInformation() { }
         public LeftRightSet<OMITemperatureInformation> Front { get; set; } = new LeftRightSet<OMITemperatureInformation>();
         public LeftRightSet<OMITemperatureInformation> Rear { get; set; } = new LeftRightSet<OMITemperatureInformation>();
+        public void SetTemperature(StatusDataBase data)
+        {
+            Front.Left.Outer.Temperature = data.TyreTemperatureFrontLeftOuter;
+            Front.Left.Middle.Temperature = data.TyreTemperatureFrontLeftMiddle;
+            Front.Left.Inner.Temperature = data.TyreTemperatureFrontLeftInner;
 
+            Front.Right.Outer.Temperature = data.TyreTemperatureFrontRightOuter;
+            Front.Right.Middle.Temperature = data.TyreTemperatureFrontRightMiddle;
+            Front.Right.Inner.Temperature = data.TyreTemperatureFrontRightInner;
+
+            Rear.Left.Outer.Temperature = data.TyreTemperatureRearLeftOuter;
+            Rear.Left.Middle.Temperature = data.TyreTemperatureRearLeftMiddle;
+            Rear.Left.Inner.Temperature = data.TyreTemperatureRearLeftInner;
+
+            Rear.Right.Outer.Temperature = data.TyreTemperatureRearRightOuter;
+            Rear.Right.Middle.Temperature = data.TyreTemperatureRearRightMiddle;
+            Rear.Right.Inner.Temperature = data.TyreTemperatureRearRightInner;
+        }
         public double OptimalTemperature
         {
             set

@@ -2,6 +2,7 @@
 using SimHub.Plugins;
 using Simhub_R3E_Tyre_and_brake_color_plugin.Model;
 using Simhub_R3E_Tyre_and_brake_color_plugin.Models;
+using Simhub_R3E_Tyre_and_brake_color_plugin.Settings;
 using System;
 
 namespace Simhub_R3E_Tyre_and_brake_color_plugin
@@ -13,9 +14,12 @@ namespace Simhub_R3E_Tyre_and_brake_color_plugin
     {
         public R3ETyreAndBrakeColor() { }
 
+        public static ColorSettings ColorSettings { get; set; } = new ColorSettings();
         private readonly string _supportedGameName = "RRRE";
         private readonly TyresInformation _tyres = new TyresInformation();
         private readonly BrakesInformation _brakes = new BrakesInformation();
+
+        private string _carId;
 
         /// <summary>
         /// Instance of the current plugin manager
@@ -40,7 +44,35 @@ namespace Simhub_R3E_Tyre_and_brake_color_plugin
         {
             if (data.GameRunning && data.GameName == this._supportedGameName)
             {
+                if (data.NewData.CarId != this._carId)
+                {
+                    this._carId = data.NewData.CarId;
+                }
 
+                this._brakes.SetTemperature(data.NewData);
+                this._tyres.SetTemperature(data.NewData);
+
+                //Brakes
+                pluginManager.SetPropertyValue("BrakeColorFrontLeft", this.GetType(), this._brakes.Front.Left.Color);
+                pluginManager.SetPropertyValue("BrakeColorFrontRight", this.GetType(), this._brakes.Front.Right.Color);
+                pluginManager.SetPropertyValue("BrakeColorRearLeft", this.GetType(), this._brakes.Rear.Left.Color);
+                pluginManager.SetPropertyValue("BrakeColorRearRight", this.GetType(), this._brakes.Rear.Right.Color);
+                //Tyres
+                pluginManager.SetPropertyValue("TyreColorFrontLeftOuter", this.GetType(), this._tyres.Front.Left.Outer.Color);
+                pluginManager.SetPropertyValue("TyreColorFrontLeftMiddle", this.GetType(), this._tyres.Front.Left.Middle.Color);
+                pluginManager.SetPropertyValue("TyreColorFrontLeftInner", this.GetType(), this._tyres.Front.Left.Inner.Color);
+
+                pluginManager.SetPropertyValue("TyreColorFrontRightOuter", this.GetType(), this._tyres.Front.Right.Outer.Color);
+                pluginManager.SetPropertyValue("TyreColorFrontRightMiddle", this.GetType(), this._tyres.Front.Right.Middle.Color);
+                pluginManager.SetPropertyValue("TyreColorFrontRightInner", this.GetType(), this._tyres.Front.Right.Inner.Color);
+
+                pluginManager.SetPropertyValue("TyreColorRearLeftOuter", this.GetType(), this._tyres.Rear.Left.Outer.Color);
+                pluginManager.SetPropertyValue("TyreColorRearLeftMiddle", this.GetType(), this._tyres.Rear.Left.Middle.Color);
+                pluginManager.SetPropertyValue("TyreColorRearLeftInner", this.GetType(), this._tyres.Rear.Left.Inner.Color);
+
+                pluginManager.SetPropertyValue("TyreColorRearRightOuter", this.GetType(), this._tyres.Rear.Right.Outer.Color);
+                pluginManager.SetPropertyValue("TyreColorRearRightMiddle", this.GetType(), this._tyres.Rear.Right.Middle.Color);
+                pluginManager.SetPropertyValue("TyreColorRearRightInner", this.GetType(), this._tyres.Rear.Right.Inner.Color);
             }
         }
 
@@ -61,28 +93,41 @@ namespace Simhub_R3E_Tyre_and_brake_color_plugin
         public void Init(PluginManager pluginManager)
         {
             SimHub.Logging.Current.Info("Starting plugin");
+
+            this._brakes.Min = 100;
+            this._brakes.Max = 1000;
+            this._brakes.OptimalTemperature = 550;
+            this._brakes.OptimalRange = new Range(200, 200);
+
+            this._tyres.Min = 60;
+            this._tyres.Max = 100;
+            this._tyres.OptimalTemperature = 85;
+            this._tyres.OptimalRange = new Range(5, 5);
+
             pluginManager.AddProperty<bool>("PluginRunning", this.GetType(), true);
             //Brakes
-            pluginManager.AddProperty<string>("FrontLeftBrakeColor", this.GetType(), this._brakes.Front.Left.Color);
-            pluginManager.AddProperty<string>("FrontRightBrakeColor", this.GetType(), this._brakes.Front.Right.Color);
-            pluginManager.AddProperty<string>("RearLeftBrakeColor", this.GetType(), this._brakes.Rear.Left.Color);
-            pluginManager.AddProperty<string>("RearRightBrakeColor", this.GetType(), this._brakes.Rear.Right.Color);
+            pluginManager.AddProperty("BrakeColorFrontLeft", this.GetType(), "#FFFFFF");
+            pluginManager.AddProperty("BrakeColorFrontRight", this.GetType(), "#FFFFFF");
+            pluginManager.AddProperty("BrakeColorRearLeft", this.GetType(), "#FFFFFF");
+            pluginManager.AddProperty("BrakeColorRearRight", this.GetType(), "#FFFFFF");
             //Tyres
-            pluginManager.AddProperty<string>("FrontLeftTyreOuterColor", this.GetType(), this._tyres.Front.Left.Outer.Color);
-            pluginManager.AddProperty<string>("FrontLeftTyreMiddleColor", this.GetType(), this._tyres.Front.Left.Middle.Color);
-            pluginManager.AddProperty<string>("FrontLeftTyreInnerColor", this.GetType(), this._tyres.Front.Left.Inner.Color);
+            pluginManager.AddProperty("TyreColorFrontLeftOuter", this.GetType(), "#FFFFFF");
+            pluginManager.AddProperty("TyreColorFrontLeftMiddle", this.GetType(), "#FFFFFF");
+            pluginManager.AddProperty("TyreColorFrontLeftInner", this.GetType(), "#FFFFFF");
 
-            pluginManager.AddProperty<string>("FrontRightTyreOuterColor", this.GetType(), this._tyres.Front.Right.Outer.Color);
-            pluginManager.AddProperty<string>("FrontRightTyreMiddleColor", this.GetType(), this._tyres.Front.Right.Middle.Color);
-            pluginManager.AddProperty<string>("FrontRightTyreInnerColor", this.GetType(), this._tyres.Front.Right.Inner.Color);
+            pluginManager.AddProperty("TyreColorFrontRightOuter", this.GetType(), "#FFFFFF");
+            pluginManager.AddProperty("TyreColorFrontRightMiddle", this.GetType(), "#FFFFFF");
+            pluginManager.AddProperty("TyreColorFrontRightInner", this.GetType(), "#FFFFFF");
 
-            pluginManager.AddProperty<string>("RearLeftTyreOuterColor", this.GetType(), this._tyres.Rear.Left.Outer.Color);
-            pluginManager.AddProperty<string>("RearLeftTyreMiddleColor", this.GetType(), this._tyres.Rear.Left.Middle.Color);
-            pluginManager.AddProperty<string>("RearLeftTyreInnerColor", this.GetType(), this._tyres.Rear.Left.Inner.Color);
+            pluginManager.AddProperty("TyreColorRearLeftOuter", this.GetType(), "#FFFFFF");
+            pluginManager.AddProperty("TyreColorRearLeftMiddle", this.GetType(), "#FFFFFF");
+            pluginManager.AddProperty("TyreColorRearLeftInner", this.GetType(), "#FFFFFF");
 
-            pluginManager.AddProperty<string>("RearRightTyreOuterColor", this.GetType(), this._tyres.Rear.Right.Outer.Color);
-            pluginManager.AddProperty<string>("RearRightTyreMiddleColor", this.GetType(), this._tyres.Rear.Right.Middle.Color);
-            pluginManager.AddProperty<string>("RearRightTyreInnerColor", this.GetType(), this._tyres.Rear.Right.Inner.Color);
+            pluginManager.AddProperty("TyreColorRearRightOuter", this.GetType(), "#FFFFFF");
+            pluginManager.AddProperty("TyreColorRearRightMiddle", this.GetType(), "#FFFFFF");
+            pluginManager.AddProperty("TyreColorRearRightInner", this.GetType(), "#FFFFFF");
+
+            SimHub.Logging.Current.Info("Plugin started");
         }
     }
 }
