@@ -47,6 +47,18 @@ namespace Simhub_R3E_Tyre_and_brake_color_plugin
                 if (data.NewData.CarId != this._carId)
                 {
                     this._carId = data.NewData.CarId;
+
+                    var optimalBrakeTemp = (double)pluginManager.GetPropertyValue("DataCorePlugin.GameRawData.BrakeTemp.FrontLeft.OptimalTemp");
+                    var optimalTyreTemp = (double)pluginManager.GetPropertyValue("DataCorePlugin.GameRawData.TireTemp.FrontLeft.OptimalTemp");
+                    
+                    this._brakes.OptimalTemperature = optimalBrakeTemp;
+                    this._tyres.OptimalTemperature = optimalTyreTemp;
+
+                    this._brakes.Max = optimalBrakeTemp + 300;
+                    this._tyres.Max = optimalTyreTemp + 30;
+
+                    this._brakes.Min = optimalBrakeTemp - 300;
+                    this._tyres.Min = optimalTyreTemp - 30;
                 }
 
                 this._brakes.SetTemperature(data.NewData);
@@ -97,7 +109,7 @@ namespace Simhub_R3E_Tyre_and_brake_color_plugin
             this._brakes.Min = 100;
             this._brakes.Max = 1000;
             this._brakes.OptimalTemperature = 550;
-            this._brakes.OptimalRange = new Range(200, 200);
+            this._brakes.OptimalRange = new Range(50, 50);
 
             this._tyres.Min = 60;
             this._tyres.Max = 100;
