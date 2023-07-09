@@ -42,6 +42,9 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="RREReader">
+      <HintPath>..\..\..\..\..\Program Files (x86)\SimHub\RREReader.dll</HintPath>
+    </Reference>
     <Reference Include="SimHub.Logging">
       <HintPath>..\..\..\..\..\Program Files (x86)\SimHub\SimHub.Logging.dll</HintPath>
     </Reference>
@@ -60,20 +63,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ISetTemperature.cs" />
-    <Compile Include="Models\ITemperatureColor.cs" />
+    <Compile Include="Math\LinearFunction.cs" />
+    <Compile Include="Models\ISimhubProperty.cs" />
+    <Compile Include="Models\Prefix.cs" />
+    <Compile Include="Models\Temperature\Brake\Brake.cs" />
+    <Compile Include="Models\Temperature\ITemperature.cs" />
+    <Compile Include="Models\Temperature\ITemperatureColor.cs" />
     <Compile Include="Models\LeftRightSet.cs" />
-    <Compile Include="Models\OMITemperatureInformation.cs" />
-    <Compile Include="Models\TemperatureInformation.cs" />
-    <Compile Include="Models\ComponentTemperatureInformation.cs" />
-    <Compile Include="Models\BrakesInformation.cs" />
-    <Compile Include="Models\TyresInformation.cs" />
+    <Compile Include="Models\Temperature\Tire\OMITemperatureInformation.cs" />
+    <Compile Include="Models\Temperature\TemperatureInformation.cs" />
+    <Compile Include="Models\Temperature\R3ETemperatureColor.cs" />
+    <Compile Include="Models\Brakes\BrakesInformation.cs" />
+    <Compile Include="Models\Temperature\Tire\Tire.cs" />
+    <Compile Include="Models\Tyres\TyresInformation.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="R3ETyreAndBrakeColor.cs" />
+    <Compile Include="R3EDashboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\ColorSettings.cs" />
   </ItemGroup>
@@ -86,6 +94,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /Y "$(TargetDir)$(ProjectName).dll" "c:\Program Files (x86)\SimHub\$(ProjectName).dll"
