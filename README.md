@@ -1,1 +1,1 @@
-# Simhub-R3E-Tyre-and-brake-color-plugin
+# Simhub R3E Dashboard plugin
