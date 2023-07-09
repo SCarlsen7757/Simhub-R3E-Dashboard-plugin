@@ -6,28 +6,24 @@ using System;
 
 namespace Simhub_R3E_Dashboard_plugin
 {
-    [PluginDescription("R3E Dashboard helper plugin")]
+    [PluginDescription("Raceroom Racing Experience Dashboard helper")]
     [PluginAuthor("Mark Carlsen")]
     [PluginName("R3E Dashboard")]
     public class R3EDashboard : IPlugin, IDataPlugin
     {
         public R3EDashboard() { }
-
         public static ColorSettings ColorSettings { get; set; } = new ColorSettings();
         private readonly string _supportedGameName = "RRRE";
         private readonly TyresInformation _tyres = new TyresInformation();
         private readonly BrakesInformation _brakes = new BrakesInformation();
-
         /// <summary>
         /// Instance of the current plugin manager
         /// </summary>
         public PluginManager PluginManager { get; set; }
-
         /// <summary>
         /// Gets a short plugin title to show in left menu. Return null if you want to use the title as defined in PluginName attribute.
         /// </summary>
         public string LeftMenuTitle => null;
-
         /// <summary>
         /// Called one time per game data update, contains all normalized game data,
         /// raw data are intentionnally "hidden" under a generic object type (A plugin SHOULD NOT USE IT)
@@ -44,7 +40,6 @@ namespace Simhub_R3E_Dashboard_plugin
             _tyres.Update(data.NewData);
             _brakes.Update(data.NewData);
         }
-
         /// <summary>
         /// Called at plugin manager stop, close/dispose anything needed here !
         /// Plugins are rebuilt at game change
@@ -53,7 +48,6 @@ namespace Simhub_R3E_Dashboard_plugin
         public void End(PluginManager pluginManager)
         {
         }
-
         /// <summary>
         /// Called once after plugins startup
         /// Plugins are rebuilt at game change
