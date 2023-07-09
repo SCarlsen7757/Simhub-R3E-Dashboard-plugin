@@ -5,7 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simhub_R3E_Tyre_and_brake_color_plugin.Math
+namespace Simhub_R3E_Dashboard_plugin.Math
 {
     public static class LinearFunction
     {

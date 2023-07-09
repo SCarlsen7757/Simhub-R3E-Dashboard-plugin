@@ -1,9 +1,9 @@
 ﻿using SimHub.Plugins;
-using Simhub_R3E_Tyre_and_brake_color_plugin.Model;
+using Simhub_R3E_Dashboard_plugin.Model;
 using System;
 using System.Collections.Generic;
 
-namespace Simhub_R3E_Tyre_and_brake_color_plugin.Models
+namespace Simhub_R3E_Dashboard_plugin.Models
 {
     public class LeftRightSet<T> : Prefix, ISimhubProperty where T :ISimhubProperty, new()
     {

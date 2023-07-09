@@ -1,10 +1,10 @@
 ﻿using GameReaderCommon;
 using SimHub.Plugins;
-using Simhub_R3E_Tyre_and_brake_color_plugin.Models;
-using Simhub_R3E_Tyre_and_brake_color_plugin.Settings;
+using Simhub_R3E_Dashboard_plugin.Models;
+using Simhub_R3E_Dashboard_plugin.Settings;
 using System;
 
-namespace Simhub_R3E_Tyre_and_brake_color_plugin
+namespace Simhub_R3E_Dashboard_plugin
 {
     [PluginDescription("R3E Dashboard helper plugin")]
     [PluginAuthor("Mark Carlsen")]

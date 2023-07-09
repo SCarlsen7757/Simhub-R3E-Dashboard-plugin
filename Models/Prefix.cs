@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simhub_R3E_Tyre_and_brake_color_plugin.Models
+namespace Simhub_R3E_Dashboard_plugin.Models
 {
     public abstract class Prefix
     {

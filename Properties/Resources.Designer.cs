@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Simhub_R3E_Tyre_and_brake_color_plugin.Properties {
+namespace Simhub_R3E_Dashboard_plugin.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Simhub_R3E_Tyre_and_brake_color_plugin.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Simhub_R3E_Tyre_and_brake_color_plugin.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Simhub_R3E_Dashboard_plugin.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

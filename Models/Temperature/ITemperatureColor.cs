@@ -1,6 +1,6 @@
 ﻿using SimHub.Plugins;
 
-namespace Simhub_R3E_Tyre_and_brake_color_plugin.Model
+namespace Simhub_R3E_Dashboard_plugin.Model
 {
     public interface ITemperatureColor
     {

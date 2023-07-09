@@ -1,13 +1,13 @@
 ﻿using GameReaderCommon;
 using SimHub.Plugins;
-using Simhub_R3E_Tyre_and_brake_color_plugin.Settings;
+using Simhub_R3E_Dashboard_plugin.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simhub_R3E_Tyre_and_brake_color_plugin.Models.Temperature.Tire
+namespace Simhub_R3E_Dashboard_plugin.Models.Temperature.Tire
 {
     public class Tire : Prefix, ISimhubProperty
     {

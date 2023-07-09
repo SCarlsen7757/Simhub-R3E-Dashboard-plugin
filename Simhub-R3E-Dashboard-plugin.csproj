@@ -7,8 +7,8 @@
     <ProjectGuid>{46598565-5CD1-4E31-9472-345E91A15398}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Simhub_R3E_Tyre_and_brake_color_plugin</RootNamespace>
-    <AssemblyName>Simhub-R3E-Tyre-and-brake-color-plugin</AssemblyName>
+    <RootNamespace>Simhub_R3E_Dashboard_plugin</RootNamespace>
+    <AssemblyName>Simhub-R3E-Dashboard-plugin</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -35,21 +35,21 @@
       <HintPath>packages\ColorHelper.1.8.1\lib\netstandard2.0\ColorHelper.dll</HintPath>
     </Reference>
     <Reference Include="GameReaderCommon">
-      <HintPath>..\..\..\..\..\Program Files (x86)\SimHub\GameReaderCommon.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SimHub\GameReaderCommon.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\..\..\..\Program Files (x86)\SimHub\log4net.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SimHub\log4net.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RREReader">
-      <HintPath>..\..\..\..\..\Program Files (x86)\SimHub\RREReader.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SimHub\RREReader.dll</HintPath>
     </Reference>
     <Reference Include="SimHub.Logging">
-      <HintPath>..\..\..\..\..\Program Files (x86)\SimHub\SimHub.Logging.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SimHub\SimHub.Logging.dll</HintPath>
     </Reference>
     <Reference Include="SimHub.Plugins">
-      <HintPath>..\..\..\..\..\Program Files (x86)\SimHub\SimHub.Plugins.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SimHub\SimHub.Plugins.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

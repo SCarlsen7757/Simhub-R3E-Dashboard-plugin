@@ -1,8 +1,8 @@
 ﻿using GameReaderCommon;
 using SimHub.Plugins;
-using Simhub_R3E_Tyre_and_brake_color_plugin.Models.Temperature.Brake;
+using Simhub_R3E_Dashboard_plugin.Models.Temperature.Brake;
 
-namespace Simhub_R3E_Tyre_and_brake_color_plugin.Models
+namespace Simhub_R3E_Dashboard_plugin.Models
 {
     public class BrakesInformation : Prefix
     {

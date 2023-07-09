@@ -2,9 +2,9 @@
 using System.Numerics;
 using ColorHelper;
 using SimHub.Plugins;
-using Simhub_R3E_Tyre_and_brake_color_plugin.Settings;
+using Simhub_R3E_Dashboard_plugin.Settings;
 
-namespace Simhub_R3E_Tyre_and_brake_color_plugin.Model
+namespace Simhub_R3E_Dashboard_plugin.Model
 {
     public class R3ETemperatureColor : TemperatureInformation, ITemperatureColor
     {
