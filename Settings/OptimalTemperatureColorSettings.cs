@@ -17,15 +17,15 @@ namespace Simhub_R3E_Dashboard_plugin.Settings
         public class HueValues
         {
             public HueValues() { }
-            public HueValues(byte cold, byte optimal, byte hot)
+            public HueValues(int cold, int optimal, int hot)
             {
                 Cold = cold;
                 Optimal = optimal;
                 Hot = hot;
             }
-            public byte Cold { get; set; }
-            public byte Optimal { get; set; }
-            public byte Hot { get; set; }
+            public int Cold { get; set; }
+            public int Optimal { get; set; }
+            public int Hot { get; set; }
         }
 
         public class AbsoluteRelative
