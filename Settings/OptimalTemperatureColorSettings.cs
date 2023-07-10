@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Simhub_R3E_Dashboard_plugin.Settings
 {
-    public class ColorSettings
+    public class OptimalTemperatureColorSettings
     {
-        public ColorSettings() { }
+        public OptimalTemperatureColorSettings() { }
         public HueValues Hue { get; set; } = new HueValues(180, 120, 0);
         public TemperatureValues BrakesTemperature { get; set; } = new TemperatureValues(new AbsoluteRelative(null,300), new AbsoluteRelative(null, 300), 100, 100);
         public TemperatureValues TyresTemperature { get;set; } = new TemperatureValues(new AbsoluteRelative(null, 30), new AbsoluteRelative(null, 30), 5, 5);

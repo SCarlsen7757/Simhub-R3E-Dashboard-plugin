@@ -66,6 +66,7 @@
     <Compile Include="Math\LinearFunction.cs" />
     <Compile Include="Models\ISimhubProperty.cs" />
     <Compile Include="Models\Prefix.cs" />
+    <Compile Include="Models\Sector\SectorColor.cs" />
     <Compile Include="Models\Temperature\Brake\Brake.cs" />
     <Compile Include="Models\Temperature\ITemperature.cs" />
     <Compile Include="Models\Temperature\ITemperatureColor.cs" />
@@ -83,7 +84,7 @@
     </Compile>
     <Compile Include="R3EDashboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\ColorSettings.cs" />
+    <Compile Include="Settings\OptimalTemperatureColorSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
