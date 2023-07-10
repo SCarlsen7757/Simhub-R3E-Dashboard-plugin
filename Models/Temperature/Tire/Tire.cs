@@ -31,7 +31,7 @@ namespace Simhub_R3E_Dashboard_plugin.Models.Temperature.Tire
         {
             ColorOMITemperature.SetProperty(pluginManager);
         }
-        public void UpdatedTemperatureSettings(double optimalTemperature, TemperatureValues settings)
+        public void UpdatedTemperatureSettings(double optimalTemperature, OptimalTemperatureColorSettings.TemperatureValues settings)
         {
             ColorOMITemperature.Outer.UpdatedTemperatureSettings(optimalTemperature, settings);
             ColorOMITemperature.Middle.UpdatedTemperatureSettings(optimalTemperature, settings);

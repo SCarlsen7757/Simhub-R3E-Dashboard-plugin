@@ -15,7 +15,7 @@ namespace Simhub_R3E_Dashboard_plugin.Model
             : base(prefixList) { }
         public R3ETemperatureColor(in List<string> prefixList, string prefix) 
             : base(prefixList, prefix) { }
-        public void UpdatedTemperatureSettings(double optimalTemperature, TemperatureValues settings)
+        public void UpdatedTemperatureSettings(double optimalTemperature, OptimalTemperatureColorSettings.TemperatureValues settings)
         {
             this.Optimal.Value = optimalTemperature;
             this.Optimal.Range.Upper = optimalTemperature + settings.Range.Upper;

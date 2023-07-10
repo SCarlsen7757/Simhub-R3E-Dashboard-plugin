@@ -32,7 +32,7 @@ namespace Simhub_R3E_Dashboard_plugin.Models.Temperature.Brake
         {
             ColorTemperature.SetColorProperty(pluginManager);
         }
-        public void UpdatedTemperatureSettings(double optimalTemperature, TemperatureValues settings)
+        public void UpdatedTemperatureSettings(double optimalTemperature, OptimalTemperatureColorSettings.TemperatureValues settings)
         {
             ColorTemperature.UpdatedTemperatureSettings(optimalTemperature, settings);
         }
