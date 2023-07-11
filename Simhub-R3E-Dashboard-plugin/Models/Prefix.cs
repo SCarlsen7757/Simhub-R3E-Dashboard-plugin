@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,26 +24,18 @@ namespace Simhub_R3E_Dashboard_plugin.Models
             this._prefix = prefixList.ToList();
             this._prefix.Add(prefix);
         }
-        public string FullPrefix { get => GetFullPrefix(); }
-        private string GetFullPrefix()
-        {
-            string name = string.Empty;
-            foreach (string value in this._prefix)
-            {
-                if (string.IsNullOrEmpty(name))
-                {
-                    name = value;
-                }else
-                {
-                    name += $".{value}";
-                }
-                
-            }
-            return name;
-        }
+        public string FullPrefix { get => string.Join(".", _prefix); }
+
         public string FullName(string subfix)
         {
-            return $"{GetFullPrefix()}.{subfix}";
+            string fullPrefix = FullPrefix;
+            if (string.IsNullOrEmpty(fullPrefix)) return subfix;
+            else if (string.IsNullOrEmpty(subfix)) return fullPrefix;
+            return string.Join(".", fullPrefix, subfix);
+        }
+        public string FullName(List<string> subfixList)
+        {
+            return FullPrefix + "." + string.Join(".", subfixList);
         }
     }
 }

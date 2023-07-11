@@ -13,6 +13,8 @@ namespace Simhub_R3E_Dashboard_plugin
     {
         public R3EDashboard() { }
         public static OptimalTemperatureColorSettings ColorSettings { get; set; } = new OptimalTemperatureColorSettings();
+        public static SectorColorSettings SectorColorSettings { get; set; } = new SectorColorSettings();
+
         private readonly string _supportedGameName = "RRRE";
         private readonly TyresInformation _tyres = new TyresInformation();
         private readonly BrakesInformation _brakes = new BrakesInformation();

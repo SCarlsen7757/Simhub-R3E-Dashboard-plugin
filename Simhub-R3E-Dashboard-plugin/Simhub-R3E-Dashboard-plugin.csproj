@@ -35,21 +35,21 @@
       <HintPath>packages\ColorHelper.1.8.1\lib\netstandard2.0\ColorHelper.dll</HintPath>
     </Reference>
     <Reference Include="GameReaderCommon">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SimHub\GameReaderCommon.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SimHub\GameReaderCommon.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SimHub\log4net.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SimHub\log4net.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RREReader">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SimHub\RREReader.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SimHub\RREReader.dll</HintPath>
     </Reference>
     <Reference Include="SimHub.Logging">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SimHub\SimHub.Logging.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SimHub\SimHub.Logging.dll</HintPath>
     </Reference>
     <Reference Include="SimHub.Plugins">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SimHub\SimHub.Plugins.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SimHub\SimHub.Plugins.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -66,6 +66,8 @@
     <Compile Include="Math\LinearFunction.cs" />
     <Compile Include="Models\ISimhubProperty.cs" />
     <Compile Include="Models\Prefix.cs" />
+    <Compile Include="Models\Sector\R3ESectorColor.cs" />
+    <Compile Include="Models\Sector\Sector.cs" />
     <Compile Include="Models\Sector\SectorColor.cs" />
     <Compile Include="Models\Temperature\Brake\Brake.cs" />
     <Compile Include="Models\Temperature\ITemperature.cs" />
