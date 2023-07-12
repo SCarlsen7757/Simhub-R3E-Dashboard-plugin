@@ -26,6 +26,16 @@ namespace Simhub_R3E_Dashboard_plugin.Model
     public class Optimal
     {
         public Optimal() { }
+        public Optimal(double value, Range range)
+        {
+            Value = value;
+            Range = range;
+        }
+        public Optimal(double value, double rangeLower, double rangeUpper)
+        {
+            Value = value;
+            Range = new Range(rangeLower, rangeUpper);
+        }
         /// <summary>
         /// Optimal value
         /// </summary>

@@ -3,6 +3,7 @@ using System.Numerics;
 using ColorHelper;
 using SimHub.Plugins;
 using Simhub_R3E_Dashboard_plugin.Settings;
+using static Simhub_R3E_Dashboard_plugin.Settings.OptimalTemperatureColorSettings;
 
 namespace Simhub_R3E_Dashboard_plugin.Model
 {
@@ -13,7 +14,7 @@ namespace Simhub_R3E_Dashboard_plugin.Model
         { }
         public R3ETemperatureColor(in List<string> prefixList)
             : base(prefixList) { }
-        public R3ETemperatureColor(in List<string> prefixList, string prefix) 
+        public R3ETemperatureColor(in List<string> prefixList, string prefix)
             : base(prefixList, prefix) { }
         public void UpdatedTemperatureSettings(double optimalTemperature, OptimalTemperatureColorSettings.TemperatureValues settings)
         {
@@ -21,7 +22,7 @@ namespace Simhub_R3E_Dashboard_plugin.Model
             this.Optimal.Range.Upper = optimalTemperature + settings.Range.Upper;
             this.Optimal.Range.Lower = optimalTemperature - settings.Range.Lower;
 
-            if(settings.Max.Absolute == null )
+            if (settings.Max.Absolute == null)
             {
                 this.Max = this.Optimal.Range.Upper + settings.Max.Relative.Value;
             }
@@ -48,39 +49,39 @@ namespace Simhub_R3E_Dashboard_plugin.Model
             pluginManager.SetPropertyValue(FullName(ColorSubFix), this.GetType(), Color);
         }
         private static string ColorSubFix { get => "Color"; }
-        public string Color { get => ColorConverter(); }
+        public string Color { get => ColorConverter(this.Temperature, this.Optimal, this.Min, this.Max, R3EDashboard.ColorSettings.Hue); }
 
-        private string ColorConverter()
+        public static string ColorConverter(double temperature, Optimal optimal, double min, double max, HueValues hueColorSettings)
         {
 
             HSV hsl = new HSV(0, 100, 100);
             Vector2 point1 = new Vector2();
             Vector2 point2 = new Vector2();
 
-            switch (this.Temperature)
+            switch (temperature)
             {
-                case double n when n < Min:
-                    hsl.H = R3EDashboard.ColorSettings.Hue.Cold;
+                case double n when n < min:
+                    hsl.H = hueColorSettings.Cold;
                     break;
-                case double n when n < this.Optimal.Range.Lower: //Cold
-                    point1.X = (float)Min;
-                    point1.Y = (float)R3EDashboard.ColorSettings.Hue.Cold;
-                    point2.X = (float)this.Optimal.Range.Lower;
-                    point2.Y = (float)R3EDashboard.ColorSettings.Hue.Optimal;
-                    hsl.H = (int)Math.LinearFunction.GetY(point1, point2, this.Temperature);
+                case double n when n < optimal.Range.Lower: //Cold
+                    point1.X = (float)min;
+                    point1.Y = (float)hueColorSettings.Cold;
+                    point2.X = (float)optimal.Range.Lower;
+                    point2.Y = (float)hueColorSettings.Optimal;
+                    hsl.H = (int)Math.LinearFunction.GetY(point1, point2, temperature);
                     break;
-                case double n when n > this.Optimal.Range.Upper && n < Max://Hot
-                    point1.X = (float)this.Optimal.Range.Upper;
-                    point1.Y = (float)R3EDashboard.ColorSettings.Hue.Optimal;
-                    point2.X = (float)Max;
-                    point2.Y = (float)R3EDashboard.ColorSettings.Hue.Hot;
-                    hsl.H = (int)Math.LinearFunction.GetY(point1, point2, this.Temperature);
+                case double n when n > optimal.Range.Upper && n < max://Hot
+                    point1.X = (float)optimal.Range.Upper;
+                    point1.Y = (float)hueColorSettings.Optimal;
+                    point2.X = (float)max;
+                    point2.Y = (float)hueColorSettings.Hot;
+                    hsl.H = (int)Math.LinearFunction.GetY(point1, point2, temperature);
                     break;
-                case double n when n > Max:
-                    hsl.H = R3EDashboard.ColorSettings.Hue.Hot;
+                case double n when n > max:
+                    hsl.H = hueColorSettings.Hot;
                     break;
                 default://Optimal
-                    hsl.H = R3EDashboard.ColorSettings.Hue.Optimal;
+                    hsl.H = hueColorSettings.Optimal;
                     break;
             }
             return $"#{ColorHelper.ColorConverter.HsvToHex(hsl)}";

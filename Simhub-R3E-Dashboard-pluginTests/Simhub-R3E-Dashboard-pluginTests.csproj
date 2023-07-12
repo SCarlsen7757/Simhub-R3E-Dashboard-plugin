@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Math\LinearFunctionTests.cs" />
     <Compile Include="Models\PrefixTests.cs" />
+    <Compile Include="Models\Temperature\R3ETemperatureColorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
