@@ -21,8 +21,8 @@ namespace Simhub_R3E_Dashboard_plugin.Model
             this.Optimal.Value = optimalTemperature;
             this.Optimal.Range.Upper = optimalTemperature + settings.Range.Upper;
             this.Optimal.Range.Lower = optimalTemperature - settings.Range.Lower;
-
-            if (settings.Max.Absolute == null)
+            
+            if (settings.Max.Absolute is null)
             {
                 this.Max = this.Optimal.Range.Upper + settings.Max.Relative.Value;
             }
@@ -31,7 +31,7 @@ namespace Simhub_R3E_Dashboard_plugin.Model
                 this.Max = settings.Max.Absolute.Value;
             }
 
-            if (settings.Min.Absolute == null)
+            if (settings.Min.Absolute is null)
             {
                 this.Min = this.Optimal.Range.Lower - settings.Min.Relative.Value;
             }
