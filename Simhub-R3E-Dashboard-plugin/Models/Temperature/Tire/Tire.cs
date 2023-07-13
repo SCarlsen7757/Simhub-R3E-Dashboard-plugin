@@ -21,7 +21,7 @@ namespace Simhub_R3E_Dashboard_plugin.Models.Temperature.Tire
         public Tire(List<string> prefixList, string prefix)
             : base(prefixList, prefix)
         {
-            ColorOMITemperature = new OMITemperatureInformation(this._prefix.ToList());
+            ColorOMITemperature = new OMITemperatureInformation(this._prefix);
         }
         public void AddProperty(PluginManager pluginManager)
         {

@@ -21,7 +21,7 @@ namespace Simhub_R3E_Dashboard_plugin.Models.Temperature.Brake
         public Brake(List<string> prefixList, string prefix) 
             : base(prefixList, prefix)
         {
-            ColorTemperature = new R3ETemperatureColor(this._prefix.ToList());
+            ColorTemperature = new R3ETemperatureColor(this._prefix);
         }
 
         public void AddProperty(PluginManager pluginManager)
