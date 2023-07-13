@@ -18,17 +18,13 @@ namespace Simhub_R3E_Dashboard_plugin.Settings
             HSV fontOverallBest = new HSV(150, 12, 7);
             Colors font = new Colors(fontNotRun, fontSlow, fontpersonalBest, fontOverallBest);
 
-            Sector1 = new Sector(font, background);
-            Sector2 = new Sector(font, background);
-            Sector3 = new Sector(font, background);
+            this.Sector = new SectorColor(font, background);
         }
-        public Sector Sector1 { get; set; }
-        public Sector Sector2 { get; set; }
-        public Sector Sector3 { get; set; }
-        public class Sector
+        public SectorColor Sector { get; set; }
+        public class SectorColor
         {
-            public Sector() { }
-            public Sector(Colors font, Colors background)
+            public SectorColor() { }
+            public SectorColor(Colors font, Colors background)
             {
                 Font = font;
                 Background = background;
