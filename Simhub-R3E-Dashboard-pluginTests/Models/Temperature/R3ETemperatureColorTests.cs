@@ -27,10 +27,28 @@ namespace Simhub_R3E_Dashboard_plugin.Model.Tests
              color = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
             Assert.AreEqual<string>("#00FFFF", color);
 
+            //Semi cold test
+            temperature = 45;
+            color = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
+            Assert.AreEqual<string>("#00FF80", color);
+
+            //Lower optimal test
+            temperature = 90;
+            color = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
+            Assert.AreEqual<string>("#00FF00", color);
             //Optimal test
             temperature = 100;
              color = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
             Assert.AreEqual<string>("#00FF00", color);
+            //Upper optimal test
+            temperature = 110;
+            color = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
+            Assert.AreEqual<string>("#00FF00", color);
+
+            //Semi hot test
+            temperature = 155;
+            color = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
+            Assert.AreEqual<string>("#FFFF00", color);
 
             //Hot test
             temperature = 200;

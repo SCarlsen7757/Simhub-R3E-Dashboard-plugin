@@ -53,7 +53,8 @@ namespace Simhub_R3E_Dashboard_plugin.Model
 
         public static string ColorConverter(double temperature, Optimal optimal, double min, double max, HueValues hueColorSettings)
         {
-
+            double olt = optimal.Value - optimal.Range.Lower;
+            double @out = optimal.Value + optimal.Range.Upper;
             HSV hsl = new HSV(0, 100, 100);
             Vector2 point1 = new Vector2();
             Vector2 point2 = new Vector2();
@@ -63,21 +64,21 @@ namespace Simhub_R3E_Dashboard_plugin.Model
                 case double n when n < min:
                     hsl.H = hueColorSettings.Cold;
                     break;
-                case double n when n < optimal.Range.Lower: //Cold
+                case double n when n < olt: //Cold
                     point1.X = (float)min;
                     point1.Y = (float)hueColorSettings.Cold;
-                    point2.X = (float)optimal.Range.Lower;
+                    point2.X = (float)olt;
                     point2.Y = (float)hueColorSettings.Optimal;
-                    hsl.H = (int)Math.LinearFunction.GetY(point1, point2, temperature);
+                    hsl.H = (int)System.Math.Round(Math.LinearFunction.GetY(point1, point2, temperature),System.MidpointRounding.ToEven);
                     break;
-                case double n when n > optimal.Range.Upper && n < max://Hot
-                    point1.X = (float)optimal.Range.Upper;
+                case double n when n > @out && n < max://Hot
+                    point1.X = (float)@out;
                     point1.Y = (float)hueColorSettings.Optimal;
                     point2.X = (float)max;
                     point2.Y = (float)hueColorSettings.Hot;
-                    hsl.H = (int)Math.LinearFunction.GetY(point1, point2, temperature);
+                    hsl.H = (int)System.Math.Round(Math.LinearFunction.GetY(point1, point2, temperature),System.MidpointRounding.ToEven);
                     break;
-                case double n when n > max:
+                case double n when n >= max:
                     hsl.H = hueColorSettings.Hot;
                     break;
                 default://Optimal
