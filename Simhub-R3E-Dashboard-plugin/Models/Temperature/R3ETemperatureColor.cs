@@ -42,16 +42,16 @@ namespace Simhub_R3E_Dashboard_plugin.Model
         }
         public void AddColorProperty(PluginManager pluginManager)
         {
-            pluginManager.AddProperty(FullName(ColorSubFix), this.GetType(), "#FFFFFF");
+            pluginManager.AddProperty(FullName(ColorSubFix), this.GetType(), "#" + new HEX("FFFFFF").Value);
         }
         public void SetColorProperty(PluginManager pluginManager)
         {
-            pluginManager.SetPropertyValue(FullName(ColorSubFix), this.GetType(), Color);
+            pluginManager.SetPropertyValue(FullName(ColorSubFix), this.GetType(), "#" + Color.Value);
         }
         private static string ColorSubFix { get => "Color"; }
-        public string Color { get => ColorConverter(this.Temperature, this.Optimal, this.Min, this.Max, R3EDashboard.ColorSettings.Hue); }
+        public HEX Color { get => ColorConverter(this.Temperature, this.Optimal, this.Min, this.Max, R3EDashboard.ColorSettings.Hue); }
 
-        public static string ColorConverter(double temperature, Optimal optimal, double min, double max, HueValues hueColorSettings)
+        public static HEX ColorConverter(double temperature, Optimal optimal, double min, double max, HueValues hueColorSettings)
         {
             HSV hsl = new HSV(0, 100, 100);
             Vector2 point1 = new Vector2();
@@ -83,7 +83,7 @@ namespace Simhub_R3E_Dashboard_plugin.Model
                     hsl.H = hueColorSettings.Optimal;
                     break;
             }
-            return $"#{ColorHelper.ColorConverter.HsvToHex(hsl)}";
+            return ColorHelper.ColorConverter.HsvToHex(hsl);
         }
     }
 

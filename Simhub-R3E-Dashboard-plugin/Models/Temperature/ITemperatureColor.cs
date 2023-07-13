@@ -1,4 +1,5 @@
-﻿using SimHub.Plugins;
+﻿using ColorHelper;
+using SimHub.Plugins;
 
 namespace Simhub_R3E_Dashboard_plugin.Model
 {
@@ -7,7 +8,7 @@ namespace Simhub_R3E_Dashboard_plugin.Model
         /// <summary>
         /// Get color in HEX format.
         /// </summary>
-        string Color { get; }
+        HEX Color { get; }
         /// <summary>
         /// Add color property to Simhub
         /// </summary>

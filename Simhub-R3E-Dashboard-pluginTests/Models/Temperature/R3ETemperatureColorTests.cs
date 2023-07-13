@@ -1,11 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Simhub_R3E_Dashboard_plugin.Model;
+﻿using ColorHelper;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Simhub_R3E_Dashboard_plugin.Settings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Simhub_R3E_Dashboard_plugin.Model.Tests
 {
@@ -15,7 +10,7 @@ namespace Simhub_R3E_Dashboard_plugin.Model.Tests
         [TestMethod()]
         public void ColorConverterTest()
         {
-            string color;
+            HEX color;
             double temperature;
             Optimal optimal = new Optimal(100, 90, 110);
             double min = 0;
@@ -25,35 +20,35 @@ namespace Simhub_R3E_Dashboard_plugin.Model.Tests
             //Cold test
             temperature = 0;
             color = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<string>("#00FFFF", color);
+            Assert.AreEqual<HEX>(new HEX("00FFFF"), color);
 
             //Semi cold test
             temperature = 45;
             color = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<string>("#00FF80", color);
+            Assert.AreEqual<HEX>(new HEX("00FF80"), color);
 
             //Lower optimal test
             temperature = 90;
             color = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<string>("#00FF00", color);
+            Assert.AreEqual<HEX>(new HEX("00FF00"), color);
             //Optimal test
             temperature = 100;
             color = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<string>("#00FF00", color);
+            Assert.AreEqual<HEX>(new HEX("00FF00"), color);
             //Upper optimal test
             temperature = 110;
             color = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<string>("#00FF00", color);
+            Assert.AreEqual<HEX>(new HEX("00FF00"), color);
 
             //Semi hot test
             temperature = 155;
             color = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<string>("#FFFF00", color);
+            Assert.AreEqual<HEX>(new HEX("FFFF00"), color);
 
             //Hot test
             temperature = 200;
             color = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<string>("#FF0000", color);
+            Assert.AreEqual<HEX>(new HEX("FF0000"), color);
         }
 
         [TestMethod()]
