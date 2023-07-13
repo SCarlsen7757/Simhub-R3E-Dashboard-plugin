@@ -17,7 +17,7 @@ namespace Simhub_R3E_Dashboard_plugin.Model.Tests
         {
             string color;
             double temperature;
-            Optimal optimal = new Optimal(100, 10, 10);
+            Optimal optimal = new Optimal(100, 90, 110);
             double min = 0;
             double max = 200;
             OptimalTemperatureColorSettings.HueValues colorSettings = new OptimalTemperatureColorSettings.HueValues(180, 120, 0);
