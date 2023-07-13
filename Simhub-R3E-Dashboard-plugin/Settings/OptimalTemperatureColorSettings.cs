@@ -58,7 +58,7 @@ namespace Simhub_R3E_Dashboard_plugin.Settings
 
             public AbsoluteRelative Min { get; set; } = new AbsoluteRelative();
             public AbsoluteRelative Max { get; set; } = new AbsoluteRelative();
-            public Range Range { get; set; }
+            public Range Range { get; set; } = new Range();
 
         }
     }
