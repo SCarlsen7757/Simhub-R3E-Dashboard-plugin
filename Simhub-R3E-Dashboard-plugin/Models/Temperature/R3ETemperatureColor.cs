@@ -84,7 +84,7 @@ namespace Simhub_R3E_Dashboard_plugin.Model
                     hsl.H = hueColorSettings.Optimal;
                     break;
             }
-            return ColorHelper.ColorConverter.HsvToHex(hsl);
+            return hsl.ToHEX();
         }
     }
 
