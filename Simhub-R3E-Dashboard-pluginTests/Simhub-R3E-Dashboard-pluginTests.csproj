@@ -60,6 +60,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Extensions\ColorHelper\ColorHelperExtensionTests.cs" />
     <Compile Include="Math\LinearFunctionTests.cs" />
     <Compile Include="Models\PrefixTests.cs" />
     <Compile Include="Models\Sector\SectorColorTests.cs" />
