@@ -2,6 +2,7 @@
 using System.Numerics;
 using ColorHelper;
 using SimHub.Plugins;
+using Simhub_R3E_Dashboard_plugin.Extensions.ColorHelper;
 using Simhub_R3E_Dashboard_plugin.Settings;
 using static Simhub_R3E_Dashboard_plugin.Settings.OptimalTemperatureColorSettings;
 
@@ -42,11 +43,11 @@ namespace Simhub_R3E_Dashboard_plugin.Model
         }
         public void AddColorProperty(PluginManager pluginManager)
         {
-            pluginManager.AddProperty(FullName(ColorSubFix), this.GetType(), "#" + new HEX("FFFFFF").Value);
+            pluginManager.AddProperty(FullName(ColorSubFix), this.GetType(), new HEX("FFFFFF").ToColorString());
         }
         public void SetColorProperty(PluginManager pluginManager)
         {
-            pluginManager.SetPropertyValue(FullName(ColorSubFix), this.GetType(), "#" + Color.Value);
+            pluginManager.SetPropertyValue(FullName(ColorSubFix), this.GetType(), Color.ToColorString());
         }
         private static string ColorSubFix { get => "Color"; }
         public HEX Color { get => ColorConverter(this.Temperature, this.Optimal, this.Min, this.Max, R3EDashboard.ColorSettings.Hue); }
