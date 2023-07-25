@@ -1,4 +1,6 @@
-﻿using SimHub.Plugins;
+﻿using ColorHelper;
+using SimHub.Plugins;
+using Simhub_R3E_Dashboard_plugin.Extensions.ColorHelper;
 using Simhub_R3E_Dashboard_plugin.Settings;
 using System;
 using System.Collections.Generic;
@@ -12,14 +14,24 @@ namespace Simhub_R3E_Dashboard_plugin.Models.Sector
     {
         public R3ESectorColor() : base() { }
 
+        public SectorColors Colors { get; set; } = new SectorColors();
         public R3ESectorColor(string prefix) : base(prefix) { }
         public R3ESectorColor(List<string> prefixList) : base(prefixList) { }
         private static string ColorSubFix { get => "Color"; }
-
+        private List<string> FontSubfix { get => new List<string> { "Font", ColorSubFix }; }
+        private List<string> BackgroundSubfix { get => new List<string> { "Background", ColorSubFix }; }
         public void AddProperty(PluginManager pluginManager)
         {
-            
+            pluginManager.AddProperty(FullName(FontSubfix), this.GetType(), R3EDashboard.SectorColorSettings.Sector.Font.NotRun.ToHEX().ToColorString());
+            pluginManager.AddProperty(FullName(BackgroundSubfix), this.GetType(), R3EDashboard.SectorColorSettings.Sector.Background.NotRun.ToHEX().ToColorString());
         }
         public void SetProperty(PluginManager pluginManager) { }
+
+        public class SectorColors
+        {
+            public SectorColors() { }
+            public HEX Font { get; set; } = new HEX("FFFFFF");
+            public HEX Background { get; set; } = new HEX("FFFFFF");
+        }
     }
 }

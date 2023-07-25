@@ -1,8 +1,8 @@
 ﻿using GameReaderCommon;
 using SimHub.Plugins;
 using Simhub_R3E_Dashboard_plugin.Models;
+using Simhub_R3E_Dashboard_plugin.Models.Sector;
 using Simhub_R3E_Dashboard_plugin.Settings;
-using System;
 
 namespace Simhub_R3E_Dashboard_plugin
 {
@@ -15,9 +15,14 @@ namespace Simhub_R3E_Dashboard_plugin
         public static OptimalTemperatureColorSettings ColorSettings { get; set; } = new OptimalTemperatureColorSettings();
         public static SectorColorSettings SectorColorSettings { get; set; } = new SectorColorSettings();
 
-        private readonly string _supportedGameName = "RRRE";
+        public static bool SupportedGame(GameData data)
+        {
+            return data.GameName == SupportedGameName;
+        }
+        public static string SupportedGameName { get => "RRRE"; }
         private readonly TyresInformation _tyres = new TyresInformation();
         private readonly BrakesInformation _brakes = new BrakesInformation();
+        private readonly SectorsInformation _sectors = new SectorsInformation();
         /// <summary>
         /// Instance of the current plugin manager
         /// </summary>
@@ -37,10 +42,7 @@ namespace Simhub_R3E_Dashboard_plugin
         /// <param name="data">Current game data, including current and previous data frame.</param>
         public void DataUpdate(PluginManager pluginManager, ref GameData data)
         {
-            if (!data.GameRunning || data.GameName != this._supportedGameName) return;
-
-            _tyres.Update(data.NewData);
-            _brakes.Update(data.NewData);
+            if (!data.GameRunning || data.GameName != SupportedGameName) return;
         }
         /// <summary>
         /// Called at plugin manager stop, close/dispose anything needed here !
@@ -58,12 +60,26 @@ namespace Simhub_R3E_Dashboard_plugin
         public void Init(PluginManager pluginManager)
         {
             SimHub.Logging.Current.Info("Starting plugin");
-
             pluginManager.AddProperty<bool>("PluginRunning", this.GetType(), true);
             this._brakes.Init(PluginManager);
             this._tyres.Init(PluginManager);
+            this._sectors.Init(PluginManager);
+            pluginManager.DataUpdated += this._brakes.PluginManager_DataUpdated;
+            pluginManager.DataUpdated += this._tyres.PluginManager_DataUpdated;
+            pluginManager.DataUpdated += this._sectors.PluginManager_DataUpdated;
+
+            pluginManager.CarChanged += Test;
 
             SimHub.Logging.Current.Info("Plugin started");
+        }
+
+        public void Test(string newCar, PluginManager manager)
+        {
+        }
+
+        public void NewLapTest(int completedLapNumber, bool testLap, PluginManager manager, ref GameData data)
+        {
+
         }
     }
 }

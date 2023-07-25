@@ -65,11 +65,13 @@
   <ItemGroup>
     <Compile Include="Extensions\ColorHelper\ColorHelperExtension.cs" />
     <Compile Include="Math\LinearFunction.cs" />
+    <Compile Include="Models\ISimhub.cs" />
     <Compile Include="Models\ISimhubProperty.cs" />
     <Compile Include="Models\Prefix.cs" />
     <Compile Include="Models\Sector\R3ESectorColor.cs" />
     <Compile Include="Models\Sector\Sector.cs" />
     <Compile Include="Models\Sector\SectorColor.cs" />
+    <Compile Include="Models\Sector\SectorsInformation.cs" />
     <Compile Include="Models\Temperature\Brake\Brake.cs" />
     <Compile Include="Models\Temperature\ITemperature.cs" />
     <Compile Include="Models\Temperature\ITemperatureColor.cs" />
