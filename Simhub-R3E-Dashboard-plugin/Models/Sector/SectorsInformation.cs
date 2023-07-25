@@ -2,6 +2,7 @@
 using SimHub.Plugins;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,40 +16,45 @@ namespace Simhub_R3E_Dashboard_plugin.Models.Sector
         {
             this.sector = new Sector[3];
 
-            for (int i = 0; i < this.sector.Length; i++) { this.sector[i] = new Sector("Sector" + (i + 1).ToString()); }
+            for (int i = 0; i < this.sector.Length; i++) { this.sector[i] = new Sector(i + 1); }
         }
 
         public readonly Sector[] sector;
 
-        public PluginManager PluginManager { get; set; } = null;
         public void Init(PluginManager pluginManager)
         {
-            PluginManager = pluginManager;
             foreach (Sector sector in this.sector) { sector.Color.AddProperty(pluginManager); }
             pluginManager.DataUpdated += PluginManager_DataUpdated;
             pluginManager.NewLap += PluginManager_NewLap;
         }
 
-        private async void Test()
+        private async void ClearSectorColorsWithDelay(PluginManager pluginManager, TimeSpan timeSpan)
         {
-            await Console.Out.WriteLineAsync("First msg");
-            await Task.Delay(5000);
-            await Console.Out.WriteLineAsync("This is a msg");
+            await Task.Delay(timeSpan);
+            foreach (Sector sector in this.sector)
+            {
+                sector.Clear(pluginManager);
+            }
         }
 
         private void PluginManager_NewLap(int completedLapNumber, bool testLap, PluginManager manager, ref GameData data)
         {
-            //throw new NotImplementedException();
-            Test();
-            // Thread.Sleep(5000);
+            TimeSpan timeSpan = new TimeSpan(0, 0, 5);
+
+            this.sector[this.sector.Length - 1].Update(manager, data);
+            ClearSectorColorsWithDelay(manager, timeSpan);
         }
 
         public void PluginManager_DataUpdated(ref GameData data, PluginManager manager)
         {
             if (!data.GameRunning || !R3EDashboard.SupportedGame(data)) return;
-            this.Update(data.NewData);
+            this.Update(manager, data);
         }
 
-        public void Update(StatusDataBase data) { }
+        public void Update(PluginManager pluginManager, GameData data)
+        {
+            if (data.NewData.Sector1Time != null) this.sector[0].Update(pluginManager, data);
+            if(data.NewData.Sector2Time != null) this.sector[1].Update(pluginManager, data);
+        }
     }
 }

@@ -25,7 +25,11 @@ namespace Simhub_R3E_Dashboard_plugin.Models.Sector
             pluginManager.AddProperty(FullName(FontSubfix), this.GetType(), R3EDashboard.SectorColorSettings.Sector.Font.NotRun.ToHEX().ToColorString());
             pluginManager.AddProperty(FullName(BackgroundSubfix), this.GetType(), R3EDashboard.SectorColorSettings.Sector.Background.NotRun.ToHEX().ToColorString());
         }
-        public void SetProperty(PluginManager pluginManager) { }
+        public void SetProperty(PluginManager pluginManager)
+        {
+            pluginManager.SetPropertyValue(FullName(FontSubfix), this.GetType(), Colors.Font.ToColorString());
+            pluginManager.SetPropertyValue(FullName(BackgroundSubfix), this.GetType(), Colors.Background.ToColorString());
+        }
 
         public class SectorColors
         {
