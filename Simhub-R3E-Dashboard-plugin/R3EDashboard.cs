@@ -64,22 +64,7 @@ namespace Simhub_R3E_Dashboard_plugin
             this._brakes.Init(PluginManager);
             this._tyres.Init(PluginManager);
             this._sectors.Init(PluginManager);
-            pluginManager.DataUpdated += this._brakes.PluginManager_DataUpdated;
-            pluginManager.DataUpdated += this._tyres.PluginManager_DataUpdated;
-            pluginManager.DataUpdated += this._sectors.PluginManager_DataUpdated;
-
-            pluginManager.CarChanged += Test;
-
             SimHub.Logging.Current.Info("Plugin started");
-        }
-
-        public void Test(string newCar, PluginManager manager)
-        {
-        }
-
-        public void NewLapTest(int completedLapNumber, bool testLap, PluginManager manager, ref GameData data)
-        {
-
         }
     }
 }

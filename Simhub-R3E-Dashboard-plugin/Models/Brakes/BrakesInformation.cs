@@ -15,16 +15,12 @@ namespace Simhub_R3E_Dashboard_plugin.Models
         }
         public LeftRightSet<Brake> Front { get; set; }
         public LeftRightSet<Brake> Rear { get; set; }
-        /// <summary>
-        /// Instance of the current plugin manager
-        /// </summary>
-        public PluginManager PluginManager { get; set; } = null;
 
         private bool _newCar = false;
         private string _carId = string.Empty;
         public void Init(PluginManager pluginManager)
         {
-            this.PluginManager = pluginManager;
+            pluginManager.DataUpdated += PluginManager_DataUpdated;
             Front.AddProperty(pluginManager);
             Rear.AddProperty(pluginManager);
         }
@@ -32,7 +28,7 @@ namespace Simhub_R3E_Dashboard_plugin.Models
         public void PluginManager_DataUpdated(ref GameData data, PluginManager manager)
         {
             if (!data.GameRunning || !R3EDashboard.SupportedGame(data)) return;
-            this.Update(data.NewData);
+            this.Update(data.NewData, manager);
         }
 
         private void CalcOptimalTemperature(object rawData)
@@ -47,7 +43,7 @@ namespace Simhub_R3E_Dashboard_plugin.Models
             this.Rear.Right.UpdatedTemperatureSettings(data.BrakeTemp.RearRight.OptimalTemp, R3EDashboard.ColorSettings.BrakesTemperature);
         }
 
-        private void Update(StatusDataBase data)
+        private void Update(StatusDataBase data, PluginManager pluginManager)
         {
             if (data.CarId != this._carId)
             {
@@ -55,19 +51,17 @@ namespace Simhub_R3E_Dashboard_plugin.Models
                 this._newCar = true;
             }
             if (this._newCar) this.CalcOptimalTemperature(data.GetRawDataObject());
-            this.UpdateTemperature(data);
+            this.UpdateTemperature(data, pluginManager);
         }
-        private void UpdateTemperature(StatusDataBase data)
+        private void UpdateTemperature(StatusDataBase data, PluginManager pluginManager)
         {
-            if (this.PluginManager == null) return;
-
             Front.Left.ColorTemperature.Temperature = data.BrakeTemperatureFrontLeft;
             Front.Right.ColorTemperature.Temperature = data.BrakeTemperatureFrontRight;
             Rear.Left.ColorTemperature.Temperature = data.BrakeTemperatureRearLeft;
             Rear.Right.ColorTemperature.Temperature = data.BrakeTemperatureRearRight;
 
-            this.Front.SetProperty(PluginManager);
-            this.Rear.SetProperty(PluginManager);
+            this.Front.SetProperty(pluginManager);
+            this.Rear.SetProperty(pluginManager);
         }
     }
 

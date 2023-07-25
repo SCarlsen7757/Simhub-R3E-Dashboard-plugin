@@ -12,23 +12,19 @@ namespace Simhub_R3E_Dashboard_plugin.Models
             this.Front = new LeftRightSet<Tire>(this._prefix, nameof(Front));
             this.Rear = new LeftRightSet<Tire>(this._prefix, nameof(Rear));
         }
-        /// <summary>
-        /// Instance of the current plugin manager
-        /// </summary>
-        public PluginManager PluginManager { get; set; }
 
         private bool _newCar = false;
         private string _carId = string.Empty;
         public void Init(PluginManager pluginManager)
         {
-            this.PluginManager = pluginManager;
-            this.Front.AddProperty(PluginManager);
-            this.Rear.AddProperty(PluginManager);
+            pluginManager.DataUpdated += PluginManager_DataUpdated;
+            this.Front.AddProperty(pluginManager);
+            this.Rear.AddProperty(pluginManager);
         }
         public void PluginManager_DataUpdated(ref GameData data, PluginManager manager)
         {
             if (!data.GameRunning || !R3EDashboard.SupportedGame(data)) return;
-            this.Update(data.NewData);
+            this.Update(data.NewData, manager);
         }
 
         public LeftRightSet<Tire> Front { get; set; }
@@ -46,7 +42,7 @@ namespace Simhub_R3E_Dashboard_plugin.Models
             this.Rear.Right.UpdatedTemperatureSettings(data.TireTemp.RearRight.OptimalTemp, R3EDashboard.ColorSettings.TyresTemperature);
         }
 
-        public void Update(StatusDataBase data)
+        public void Update(StatusDataBase data, PluginManager pluginManager)
         {
             if (data.CarId != this._carId)
             {
@@ -54,12 +50,10 @@ namespace Simhub_R3E_Dashboard_plugin.Models
                 this._newCar = true;
             }
             if (this._newCar) this.CalcOptimalTemperature(data.GetRawDataObject());
-            this.UpdateTemperature(data);
+            this.UpdateTemperature(data, pluginManager);
         }
-        private void UpdateTemperature(StatusDataBase data)
+        private void UpdateTemperature(StatusDataBase data, PluginManager pluginManager)
         {
-            if (this.PluginManager == null) return;
-
             Front.Left.ColorOMITemperature.Outer.Temperature = data.TyreTemperatureFrontLeftOuter;
             Front.Left.ColorOMITemperature.Middle.Temperature = data.TyreTemperatureFrontLeftMiddle;
             Front.Left.ColorOMITemperature.Inner.Temperature = data.TyreTemperatureFrontLeftInner;
@@ -76,8 +70,8 @@ namespace Simhub_R3E_Dashboard_plugin.Models
             Rear.Right.ColorOMITemperature.Middle.Temperature = data.TyreTemperatureRearRightMiddle;
             Rear.Right.ColorOMITemperature.Inner.Temperature = data.TyreTemperatureRearRightInner;
 
-            this.Front.SetProperty(PluginManager);
-            this.Rear.SetProperty(PluginManager);
+            this.Front.SetProperty(pluginManager);
+            this.Rear.SetProperty(pluginManager);
         }
     }
 }
