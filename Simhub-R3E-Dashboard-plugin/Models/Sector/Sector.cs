@@ -33,35 +33,65 @@ namespace Simhub_R3E_Dashboard_plugin.Models.Sector
             Color.SetProperty(pluginManager);
         }
 
-        public void Update(PluginManager pluginManager, GameData data)
+        public void Update(PluginManager pluginManager, ref GameData data)
         {
+            R3E.Data.Shared rawdata = (R3E.Data.Shared)data.NewData.GetRawDataObject();
 
+            TimeSpan? personalBest;
+            TimeSpan? overallBest;
+            long ticks;
+            float bestIndividualSectorTimeSelf;
+            float bestIndividualSectorTimeLeaderClass;
 
             switch (sectorNumber)
             {
                 case 1:
-                    Time.OverallBest = data.NewData.Sector1BestLapTime;
-                    Time.PersonalBest = data.NewData.Sector1BestTime;
+                    bestIndividualSectorTimeSelf = rawdata.BestIndividualSectorTimeSelf.Sector1;
+                    bestIndividualSectorTimeLeaderClass = rawdata.BestIndividualSectorTimeLeaderClass.Sector1;
+                    
                     Time.Last = data.NewData.Sector1LastLapTime;
                     Time.New = data.NewData.Sector1Time;
                     break;
                 case 2:
-                    Time.OverallBest = data.NewData.Sector2BestLapTime;
-                    Time.PersonalBest = data.NewData.Sector2BestTime;
+                    bestIndividualSectorTimeSelf = rawdata.BestIndividualSectorTimeSelf.Sector2;
+                    bestIndividualSectorTimeLeaderClass = rawdata.BestIndividualSectorTimeLeaderClass.Sector2; 
                     Time.Last = data.NewData.Sector2LastLapTime;
                     Time.New = data.NewData.Sector2Time;
                     break;
-                case 3:
+                case 3:  
+                    bestIndividualSectorTimeSelf = rawdata.BestIndividualSectorTimeSelf.Sector3;
+                    bestIndividualSectorTimeLeaderClass = rawdata.BestIndividualSectorTimeLeaderClass.Sector3;
                     Time.OverallBest = data.NewData.Sector3BestLapTime;
-                    Time.PersonalBest = data.NewData.Sector3BestTime;
-                    Time.Last = data.NewData.Sector3LastLapTime;
-                    Time.New = data.OldData.Sector3LastLapTime;
+                    Time.Last = data.OldData.Sector3LastLapTime;
+                    Time.New = data.NewData.Sector3LastLapTime;
                     break;
                 default:
+                    bestIndividualSectorTimeSelf = -1;
+                    bestIndividualSectorTimeLeaderClass = -1;
                     break;
             }
 
+            if (bestIndividualSectorTimeSelf > 0)
+            {
+                ticks = (long)(bestIndividualSectorTimeSelf * 1000 * 10000);
+                personalBest = new TimeSpan(ticks);
+            }
+            else
+            {
+                personalBest = null;
+            }
+            Time.PersonalBest = personalBest;
 
+            if (bestIndividualSectorTimeLeaderClass > 0)
+            {
+                ticks = (long)(bestIndividualSectorTimeLeaderClass * 1000 * 10000);
+                overallBest = new TimeSpan(ticks);
+            }
+            else
+            {
+                overallBest = null;
+            }
+            Time.OverallBest = overallBest;
 
 
             Color.Colors.Font = SectorColor.ColorConverter(R3EDashboard.SectorColorSettings.Sector.Font, Time);
