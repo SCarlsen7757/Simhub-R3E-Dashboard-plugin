@@ -7,8 +7,8 @@
     <ProjectGuid>{C2330226-9BAA-4B51-912E-C0ED3F3EC734}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Simhub_R3E_Dashboard_pluginTests</RootNamespace>
-    <AssemblyName>Simhub-R3E-Dashboard-pluginTests</AssemblyName>
+    <RootNamespace>Simhub_R3E_Extra_properties_pluginTests</RootNamespace>
+    <AssemblyName>Simhub-R3E-Extra-properties-pluginTests</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -71,7 +71,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Simhub-R3E-Dashboard-plugin\Simhub-R3E-Extra-properties-plugin.csproj">
+    <ProjectReference Include="..\Simhub-R3E-Extra-properties-plugin\Simhub-R3E-Extra-properties-plugin.csproj">
       <Project>{46598565-5CD1-4E31-9472-345E91A15398}</Project>
       <Name>Simhub-R3E-Extra-properties-plugin</Name>
     </ProjectReference>
@@ -100,10 +100,10 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\Simhub-R3E-Dashboard-plugin\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\Simhub-R3E-Dashboard-plugin\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.props'))" />
-    <Error Condition="!Exists('..\Simhub-R3E-Dashboard-plugin\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Simhub-R3E-Dashboard-plugin\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.targets'))" />
+    <Error Condition="!Exists('..\Simhub-R3E-Extra-properties-plugin\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\Simhub-R3E-Extra-properties-plugin\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.props'))" />
+    <Error Condition="!Exists('..\Simhub-R3E-Extra-properties-plugin\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Simhub-R3E-Extra-properties-plugin\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.targets'))" />
   </Target>
-  <Import Project="..\Simhub-R3E-Dashboard-plugin\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.targets" Condition="Exists('..\Simhub-R3E-Dashboard-plugin\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.targets')" />
+  <Import Project="..\Simhub-R3E-Extra-properties-plugin\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.targets" Condition="Exists('..\Simhub-R3E-Extra-properties-plugin\packages\MSTest.TestAdapter.2.2.10\build\net46\MSTest.TestAdapter.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
