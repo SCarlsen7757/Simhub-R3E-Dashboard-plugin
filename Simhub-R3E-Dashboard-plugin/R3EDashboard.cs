@@ -3,6 +3,7 @@ using SimHub.Plugins;
 using Simhub_R3E_Dashboard_plugin.Models;
 using Simhub_R3E_Dashboard_plugin.Models.Sector;
 using Simhub_R3E_Dashboard_plugin.Settings;
+using System;
 
 namespace Simhub_R3E_Dashboard_plugin
 {
@@ -14,6 +15,15 @@ namespace Simhub_R3E_Dashboard_plugin
         public R3EDashboard() { }
         public static OptimalTemperatureColorSettings ColorSettings { get; set; } = new OptimalTemperatureColorSettings();
         public static SectorColorSettings SectorColorSettings { get; set; } = new SectorColorSettings();
+
+        public string PluginName
+        {
+            get
+            {
+                PluginNameAttribute attribute = (PluginNameAttribute)Attribute.GetCustomAttribute(this.GetType(), typeof(PluginNameAttribute));
+                return attribute.name;
+            }
+        }
 
         public static bool SupportedGame(GameData data)
         {
@@ -59,7 +69,7 @@ namespace Simhub_R3E_Dashboard_plugin
         /// <param name="pluginManager"></param>
         public void Init(PluginManager pluginManager)
         {
-            SimHub.Logging.Current.Info("Starting plugin");
+            SimHub.Logging.Current.Info($"Starting plugin: {this.PluginName}, Version {Version.PluginVersion}");
             pluginManager.AddProperty<bool>("PluginRunning", this.GetType(), true);
             this._brakes.Init(PluginManager);
             this._tyres.Init(PluginManager);
