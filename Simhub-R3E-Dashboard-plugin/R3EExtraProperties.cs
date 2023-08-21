@@ -1,18 +1,18 @@
 ﻿using GameReaderCommon;
 using SimHub.Plugins;
-using Simhub_R3E_Dashboard_plugin.Models;
-using Simhub_R3E_Dashboard_plugin.Models.Sector;
-using Simhub_R3E_Dashboard_plugin.Settings;
+using Simhub_R3E_Extra_properties_plugin.Models;
+using Simhub_R3E_Extra_properties_plugin.Models.Sector;
+using Simhub_R3E_Extra_properties_plugin.Settings;
 using System;
 
-namespace Simhub_R3E_Dashboard_plugin
+namespace Simhub_R3E_Extra_properties_plugin
 {
     [PluginDescription("Raceroom Racing Experience Dashboard helper")]
     [PluginAuthor("Mark Carlsen")]
     [PluginName("R3E Dashboard")]
-    public class R3EDashboard : IPlugin, IDataPlugin
+    public class R3EExtraProperties : IPlugin, IDataPlugin
     {
-        public R3EDashboard() { }
+        public R3EExtraProperties() { }
         public static OptimalTemperatureColorSettings ColorSettings { get; set; } = new OptimalTemperatureColorSettings();
         public static SectorColorSettings SectorColorSettings { get; set; } = new SectorColorSettings();
 

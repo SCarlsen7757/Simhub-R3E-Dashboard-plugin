@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Simhub_R3E_Dashboard_plugin.Properties {
+namespace Simhub_R3E_Extra_properties_plugin.Properties {
     using System;
     
     

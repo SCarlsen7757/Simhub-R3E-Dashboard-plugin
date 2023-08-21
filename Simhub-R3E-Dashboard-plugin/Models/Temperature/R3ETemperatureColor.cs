@@ -2,11 +2,11 @@
 using System.Numerics;
 using ColorHelper;
 using SimHub.Plugins;
-using Simhub_R3E_Dashboard_plugin.Extensions.ColorHelper;
-using Simhub_R3E_Dashboard_plugin.Settings;
-using static Simhub_R3E_Dashboard_plugin.Settings.OptimalTemperatureColorSettings;
+using Simhub_R3E_Extra_properties_plugin.Extensions.ColorHelper;
+using Simhub_R3E_Extra_properties_plugin.Settings;
+using static Simhub_R3E_Extra_properties_plugin.Settings.OptimalTemperatureColorSettings;
 
-namespace Simhub_R3E_Dashboard_plugin.Model
+namespace Simhub_R3E_Extra_properties_plugin.Model
 {
     public class R3ETemperatureColor : TemperatureInformation, ITemperatureColor
     {
@@ -50,7 +50,7 @@ namespace Simhub_R3E_Dashboard_plugin.Model
             pluginManager.SetPropertyValue(FullName(ColorSubFix), this.GetType(), Color.ToColorString());
         }
         private static string ColorSubFix { get => "Color"; }
-        public HEX Color { get => ColorConverter(this.Temperature, this.Optimal, this.Min, this.Max, R3EDashboard.ColorSettings.Hue); }
+        public HEX Color { get => ColorConverter(this.Temperature, this.Optimal, this.Min, this.Max, R3EExtraProperties.ColorSettings.Hue); }
 
         public static HEX ColorConverter(double temperature, Optimal optimal, double min, double max, HueValues hueColorSettings)
         {

@@ -1,6 +1,6 @@
 ﻿using ColorHelper;
 
-namespace Simhub_R3E_Dashboard_plugin.Settings
+namespace Simhub_R3E_Extra_properties_plugin.Settings
 {
     public class SectorColorSettings
     {

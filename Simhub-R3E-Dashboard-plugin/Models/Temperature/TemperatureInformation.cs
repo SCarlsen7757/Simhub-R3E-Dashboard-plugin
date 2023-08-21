@@ -1,7 +1,7 @@
-﻿using Simhub_R3E_Dashboard_plugin.Models;
+﻿using Simhub_R3E_Extra_properties_plugin.Models;
 using System.Collections.Generic;
 
-namespace Simhub_R3E_Dashboard_plugin.Model
+namespace Simhub_R3E_Extra_properties_plugin.Model
 {
     public abstract class TemperatureInformation : Prefix
     {

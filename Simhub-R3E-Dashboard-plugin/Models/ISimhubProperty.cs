@@ -1,6 +1,6 @@
 ﻿using SimHub.Plugins;
 
-namespace Simhub_R3E_Dashboard_plugin.Models
+namespace Simhub_R3E_Extra_properties_plugin.Models
 {
     public interface ISimhubProperty
     {

@@ -1,8 +1,8 @@
 ﻿using GameReaderCommon;
 using SimHub.Plugins;
-using Simhub_R3E_Dashboard_plugin.Models.Temperature.Tire;
+using Simhub_R3E_Extra_properties_plugin.Models.Temperature.Tire;
 
-namespace Simhub_R3E_Dashboard_plugin.Models
+namespace Simhub_R3E_Extra_properties_plugin.Models
 {
     public class TyresInformation : Prefix, ISimhub
     {
@@ -23,7 +23,7 @@ namespace Simhub_R3E_Dashboard_plugin.Models
         }
         public void PluginManager_DataUpdated(ref GameData data, PluginManager manager)
         {
-            if (!data.GameRunning || !R3EDashboard.SupportedGame(data)) return;
+            if (!data.GameRunning || !R3EExtraProperties.SupportedGame(data)) return;
             this.Update(data.NewData, manager);
         }
 
@@ -36,10 +36,10 @@ namespace Simhub_R3E_Dashboard_plugin.Models
             this._newCar = false;
             R3E.Data.Shared data = (R3E.Data.Shared)rawData;
 
-            this.Front.Left.UpdatedTemperatureSettings(data.TireTemp.FrontLeft.OptimalTemp, R3EDashboard.ColorSettings.TyresTemperature);
-            this.Front.Right.UpdatedTemperatureSettings(data.TireTemp.FrontRight.OptimalTemp, R3EDashboard.ColorSettings.TyresTemperature);
-            this.Rear.Left.UpdatedTemperatureSettings(data.TireTemp.RearLeft.OptimalTemp, R3EDashboard.ColorSettings.TyresTemperature);
-            this.Rear.Right.UpdatedTemperatureSettings(data.TireTemp.RearRight.OptimalTemp, R3EDashboard.ColorSettings.TyresTemperature);
+            this.Front.Left.UpdatedTemperatureSettings(data.TireTemp.FrontLeft.OptimalTemp, R3EExtraProperties.ColorSettings.TyresTemperature);
+            this.Front.Right.UpdatedTemperatureSettings(data.TireTemp.FrontRight.OptimalTemp, R3EExtraProperties.ColorSettings.TyresTemperature);
+            this.Rear.Left.UpdatedTemperatureSettings(data.TireTemp.RearLeft.OptimalTemp, R3EExtraProperties.ColorSettings.TyresTemperature);
+            this.Rear.Right.UpdatedTemperatureSettings(data.TireTemp.RearRight.OptimalTemp, R3EExtraProperties.ColorSettings.TyresTemperature);
         }
 
         public void Update(StatusDataBase data, PluginManager pluginManager)

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simhub_R3E_Dashboard_plugin.Models
+namespace Simhub_R3E_Extra_properties_plugin.Models
 {
     public abstract class Prefix
     {

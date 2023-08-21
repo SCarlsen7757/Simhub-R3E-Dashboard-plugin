@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace Simhub_R3E_Dashboard_plugin.Math
+namespace Simhub_R3E_Extra_properties_plugin.Math
 {
     public static class LinearFunction
     {

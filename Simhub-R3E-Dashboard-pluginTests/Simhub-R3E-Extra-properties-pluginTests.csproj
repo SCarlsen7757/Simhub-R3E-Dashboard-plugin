@@ -71,9 +71,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Simhub-R3E-Dashboard-plugin\Simhub-R3E-Dashboard-plugin.csproj">
+    <ProjectReference Include="..\Simhub-R3E-Dashboard-plugin\Simhub-R3E-Extra-properties-plugin.csproj">
       <Project>{46598565-5CD1-4E31-9472-345E91A15398}</Project>
-      <Name>Simhub-R3E-Dashboard-plugin</Name>
+      <Name>Simhub-R3E-Extra-properties-plugin</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

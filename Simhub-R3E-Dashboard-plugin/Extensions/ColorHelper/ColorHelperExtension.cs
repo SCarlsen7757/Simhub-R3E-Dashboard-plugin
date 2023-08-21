@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simhub_R3E_Dashboard_plugin.Extensions.ColorHelper
+namespace Simhub_R3E_Extra_properties_plugin.Extensions.ColorHelper
 {
     public static class ColorHelperExtension
     {

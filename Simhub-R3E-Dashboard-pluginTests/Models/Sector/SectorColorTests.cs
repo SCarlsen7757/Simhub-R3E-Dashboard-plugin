@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Simhub_R3E_Dashboard_plugin.Models.Sector;
-using Simhub_R3E_Dashboard_plugin.Settings;
+using Simhub_R3E_Extra_properties_plugin.Models.Sector;
+using Simhub_R3E_Extra_properties_plugin.Settings;
 using ColorHelper;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simhub_R3E_Dashboard_plugin.Models.Sector.Tests
+namespace Simhub_R3E_Extra_properties_plugin.Models.Sector.Tests
 {
     [TestClass()]
     public class SectorColorTests

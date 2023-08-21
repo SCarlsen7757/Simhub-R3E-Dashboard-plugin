@@ -1,8 +1,8 @@
 ﻿using ColorHelper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Simhub_R3E_Dashboard_plugin.Settings;
+using Simhub_R3E_Extra_properties_plugin.Settings;
 
-namespace Simhub_R3E_Dashboard_plugin.Model.Tests
+namespace Simhub_R3E_Extra_properties_plugin.Model.Tests
 {
     [TestClass()]
     public class R3ETemperatureColorTests

@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Simhub_R3E_Dashboard_plugin.Models;
+using Simhub_R3E_Extra_properties_plugin.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simhub_R3E_Dashboard_plugin.Models.Tests
+namespace Simhub_R3E_Extra_properties_plugin.Models.Tests
 {
     [TestClass()]
     public class PrefixTests

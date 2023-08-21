@@ -1,9 +1,9 @@
 ﻿using SimHub.Plugins;
-using Simhub_R3E_Dashboard_plugin.Model;
+using Simhub_R3E_Extra_properties_plugin.Model;
 using System;
 using System.Collections.Generic;
 
-namespace Simhub_R3E_Dashboard_plugin.Models
+namespace Simhub_R3E_Extra_properties_plugin.Models
 {
     public class LeftRightSet<T> : Prefix, ISimhubProperty where T :ISimhubProperty, new()
     {

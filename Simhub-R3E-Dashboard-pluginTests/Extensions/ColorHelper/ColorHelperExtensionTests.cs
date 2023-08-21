@@ -1,13 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ColorHelper;
-using Simhub_R3E_Dashboard_plugin.Extensions.ColorHelper;
+using Simhub_R3E_Extra_properties_plugin.Extensions.ColorHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simhub_R3E_Dashboard_plugin.Extensions.ColorHelper.Tests
+namespace Simhub_R3E_Extra_properties_plugin.Extensions.ColorHelper.Tests
 {
     [TestClass()]
     public class ColorHelperExtensionTests

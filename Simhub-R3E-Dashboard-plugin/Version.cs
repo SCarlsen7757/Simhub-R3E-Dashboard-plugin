@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simhub_R3E_Dashboard_plugin
+namespace Simhub_R3E_Extra_properties_plugin
 {
     public class Version
     {

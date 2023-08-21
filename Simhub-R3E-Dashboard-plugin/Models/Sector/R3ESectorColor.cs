@@ -1,14 +1,14 @@
 ﻿using ColorHelper;
 using SimHub.Plugins;
-using Simhub_R3E_Dashboard_plugin.Extensions.ColorHelper;
-using Simhub_R3E_Dashboard_plugin.Settings;
+using Simhub_R3E_Extra_properties_plugin.Extensions.ColorHelper;
+using Simhub_R3E_Extra_properties_plugin.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simhub_R3E_Dashboard_plugin.Models.Sector
+namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
 {
     public class R3ESectorColor : Prefix, ISimhubProperty
     {
@@ -22,8 +22,8 @@ namespace Simhub_R3E_Dashboard_plugin.Models.Sector
         private List<string> BackgroundSubfix { get => new List<string> { "Background", ColorSubFix }; }
         public void AddProperty(PluginManager pluginManager)
         {
-            pluginManager.AddProperty(FullName(FontSubfix), this.GetType(), R3EDashboard.SectorColorSettings.Sector.Font.NotRun.ToHEX().ToColorString());
-            pluginManager.AddProperty(FullName(BackgroundSubfix), this.GetType(), R3EDashboard.SectorColorSettings.Sector.Background.NotRun.ToHEX().ToColorString());
+            pluginManager.AddProperty(FullName(FontSubfix), this.GetType(), R3EExtraProperties.SectorColorSettings.Sector.Font.NotRun.ToHEX().ToColorString());
+            pluginManager.AddProperty(FullName(BackgroundSubfix), this.GetType(), R3EExtraProperties.SectorColorSettings.Sector.Background.NotRun.ToHEX().ToColorString());
         }
         public void SetProperty(PluginManager pluginManager)
         {

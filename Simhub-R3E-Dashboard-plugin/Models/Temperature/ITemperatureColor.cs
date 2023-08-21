@@ -1,7 +1,7 @@
 ﻿using ColorHelper;
 using SimHub.Plugins;
 
-namespace Simhub_R3E_Dashboard_plugin.Model
+namespace Simhub_R3E_Extra_properties_plugin.Model
 {
     public interface ITemperatureColor
     {

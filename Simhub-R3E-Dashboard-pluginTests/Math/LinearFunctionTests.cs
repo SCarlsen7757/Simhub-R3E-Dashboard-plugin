@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Simhub_R3E_Dashboard_plugin.Math;
+using Simhub_R3E_Extra_properties_plugin.Math;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Numerics;
 
-namespace Simhub_R3E_Dashboard_plugin.Math.Tests
+namespace Simhub_R3E_Extra_properties_plugin.Math.Tests
 {
     [TestClass()]
     public class LinearFunctionTests

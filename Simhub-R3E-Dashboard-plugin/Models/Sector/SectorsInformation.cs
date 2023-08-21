@@ -3,7 +3,7 @@ using SimHub.Plugins;
 using System;
 using System.Threading.Tasks;
 
-namespace Simhub_R3E_Dashboard_plugin.Models.Sector
+namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
 {
     public class SectorsInformation : ISimhub
     {
@@ -98,7 +98,7 @@ namespace Simhub_R3E_Dashboard_plugin.Models.Sector
 
         public void PluginManager_DataUpdated(ref GameData data, PluginManager manager)
         {
-            if (!data.GameRunning || !R3EDashboard.SupportedGame(data)) return;
+            if (!data.GameRunning || !R3EExtraProperties.SupportedGame(data)) return;
             this.Update(manager, ref data);
         }
 
