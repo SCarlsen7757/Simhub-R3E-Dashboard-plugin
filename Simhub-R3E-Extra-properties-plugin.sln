@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simhub-R3E-Extra-properties-plugin", "Simhub-R3E-Extra-properties-plugin\Simhub-R3E-Extra-properties-plugin.csproj", "{46598565-5CD1-4E31-9472-345E91A15398}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simhub-R3E-Extra-properties-pluginTests", "Simhub-R3E-Extra-properties-pluginTests\Simhub-R3E-Extra-properties-pluginTests.csproj", "{C2330226-9BAA-4B51-912E-C0ED3F3EC734}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simhub-R3E-Extra-properties-pluginTests", "Simhub-R3E-Extra-properties-pluginTests\Simhub-R3E-Extra-properties-pluginTests.csproj", "{20395CA8-8446-4E8F-878F-DF5293DF39EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{46598565-5CD1-4E31-9472-345E91A15398}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46598565-5CD1-4E31-9472-345E91A15398}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46598565-5CD1-4E31-9472-345E91A15398}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2330226-9BAA-4B51-912E-C0ED3F3EC734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2330226-9BAA-4B51-912E-C0ED3F3EC734}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2330226-9BAA-4B51-912E-C0ED3F3EC734}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2330226-9BAA-4B51-912E-C0ED3F3EC734}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20395CA8-8446-4E8F-878F-DF5293DF39EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20395CA8-8446-4E8F-878F-DF5293DF39EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20395CA8-8446-4E8F-878F-DF5293DF39EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20395CA8-8446-4E8F-878F-DF5293DF39EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
