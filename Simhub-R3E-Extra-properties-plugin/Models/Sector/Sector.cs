@@ -28,8 +28,8 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
         public void Clear(PluginManager pluginManager)
         {
             this.Time.New = null;
-            Color.Colors.Font = SectorColor.ColorConverter(R3EExtraProperties.SectorColorSettings.Sector.Font, Time);
-            Color.Colors.Background = SectorColor.ColorConverter(R3EExtraProperties.SectorColorSettings.Sector.Background, Time);
+            Color.Colors.Font.Color = SectorColor.ColorConverter(R3EExtraProperties.SectorColorSettings.Sector.Font, Time);
+            Color.Colors.Background.Color = SectorColor.ColorConverter(R3EExtraProperties.SectorColorSettings.Sector.Background, Time);
             Color.SetProperty(pluginManager);
         }
 
@@ -94,8 +94,8 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
             Time.OverallBest = overallBest;
 
 
-            Color.Colors.Font = SectorColor.ColorConverter(R3EExtraProperties.SectorColorSettings.Sector.Font, Time);
-            Color.Colors.Background = SectorColor.ColorConverter(R3EExtraProperties.SectorColorSettings.Sector.Background, Time);
+            Color.Colors.Font.Color = SectorColor.ColorConverter(R3EExtraProperties.SectorColorSettings.Sector.Font, Time);
+            Color.Colors.Background.Color = SectorColor.ColorConverter(R3EExtraProperties.SectorColorSettings.Sector.Background, Time);
             Color.SetProperty(pluginManager);
         }
         public class SectorTime

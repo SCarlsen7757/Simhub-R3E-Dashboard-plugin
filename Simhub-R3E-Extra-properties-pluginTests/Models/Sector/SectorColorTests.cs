@@ -1,12 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Simhub_R3E_Extra_properties_plugin.Models.Sector;
 using Simhub_R3E_Extra_properties_plugin.Settings;
-using ColorHelper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Simhub_R3E_Extra_properties_plugin.Models.Sector.Tests
 {
@@ -16,37 +10,42 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Sector.Tests
         [TestMethod()]
         public void ColorConverterTest()
         {
-            HEX color;
+            System.Windows.Media.Color resultColor;
+            System.Windows.Media.Color expectedColor;
             Sector.SectorTime time;
-            HSV notRun = new HSV(150, 12, 7);
-            HSV slow = new HSV(50, 100, 100);
-            HSV personalBest = new HSV(120, 71, 85);
-            HSV overallBest = new HSV(288, 81, 82);
+            System.Windows.Media.Color notRun = new System.Windows.Media.Color() { R = 7, G = 7, B = 7 };
+            System.Windows.Media.Color slow = new System.Windows.Media.Color() { R = 129, G = 151, B = 62 };
+            System.Windows.Media.Color personalBest = new System.Windows.Media.Color() { R = 64, G = 117, B = 117 };
+            System.Windows.Media.Color overallBest = new System.Windows.Media.Color() { R = 239, G = 81, B = 82 };
             SectorColorSettings.Colors colors = new SectorColorSettings.Colors(notRun, slow, personalBest, overallBest);
 
             //Test with no new/current sector time
             time = new Sector.SectorTime(null, new TimeSpan(300), new TimeSpan(100), new TimeSpan(200));
 
-            color = SectorColor.ColorConverter(colors, time);
-            Assert.AreEqual<HEX>(new HEX("111312"), color);
+            expectedColor = notRun;
+            resultColor = SectorColor.ColorConverter(colors, time);
+            Assert.AreEqual(expectedColor, resultColor);
 
             //Test with slow new/current sector time
             time = new Sector.SectorTime(new TimeSpan(250), new TimeSpan(300), new TimeSpan(100), new TimeSpan(200));
 
-            color = SectorColor.ColorConverter(colors, time);
-            Assert.AreEqual<HEX>(new HEX("FFD400"), color);
+            expectedColor = slow;
+            resultColor = SectorColor.ColorConverter(colors, time);
+            Assert.AreEqual(expectedColor, resultColor);
 
             //Test with personal best new/current sector time
             time = new Sector.SectorTime(new TimeSpan(150), new TimeSpan(300), new TimeSpan(100), new TimeSpan(200));
 
-            color = SectorColor.ColorConverter(colors, time);
-            Assert.AreEqual<HEX>(new HEX("3FD93F"), color);
+            expectedColor = personalBest;
+            resultColor = SectorColor.ColorConverter(colors, time);
+            Assert.AreEqual(expectedColor, resultColor);
 
             //Test with overall best new/current sector time
             time = new Sector.SectorTime(new TimeSpan(50), new TimeSpan(300), new TimeSpan(100), new TimeSpan(200));
 
-            color = SectorColor.ColorConverter(colors, time);
-            Assert.AreEqual<HEX>(new HEX("B028D2"), color);
+            expectedColor = overallBest;
+            resultColor = SectorColor.ColorConverter(colors, time);
+            Assert.AreEqual(expectedColor, resultColor);
         }
     }
 }

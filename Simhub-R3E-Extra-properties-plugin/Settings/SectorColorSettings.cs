@@ -1,4 +1,4 @@
-﻿using ColorHelper;
+﻿using System.Windows.Media;
 
 namespace Simhub_R3E_Extra_properties_plugin.Settings
 {
@@ -6,16 +6,16 @@ namespace Simhub_R3E_Extra_properties_plugin.Settings
     {
         public SectorColorSettings()
         {
-            HSV bgNotRun = new HSV(150, 12, 7);
-            HSV bgSlow = new HSV(50,100,100);
-            HSV bgpersonalBest = new HSV(120,71,85);
-            HSV bgOverallBest = new HSV(288,81,82);
-            Colors background = new Colors(bgNotRun,bgSlow,bgpersonalBest, bgOverallBest);
+            Color bgNotRun = new Color() {A = 255, R = 16, G = 18, B = 17 };
+            Color bgSlow = new Color() { A = 255, R = 255, G = 213, B = 0 };
+            Color bgpersonalBest = new Color() {A = 255, R = 63, G = 217, B = 63 };
+            Color bgOverallBest = new Color() {A = 255, R = 175, G = 40, B = 209 };
+            Colors background = new Colors(bgNotRun, bgSlow, bgpersonalBest, bgOverallBest);
 
-            HSV fontNotRun = new HSV(0, 0, 100);
-            HSV fontSlow = new HSV(150, 12, 7);
-            HSV fontpersonalBest = new HSV(150, 12, 7);
-            HSV fontOverallBest = new HSV(150, 12, 7);
+            Color fontNotRun = new Color() {A = 255, R = 255, G = 255, B = 255 };
+            Color fontSlow = new Color() {A = 255, R = 16, G = 18, B = 17 };
+            Color fontpersonalBest = new Color() {A = 255, R = 16, G = 18, B = 17 };
+            Color fontOverallBest = new Color() {A = 255, R = 16, G = 18, B = 17 };
             Colors font = new Colors(fontNotRun, fontSlow, fontpersonalBest, fontOverallBest);
 
             this.Sector = new SectorColor(font, background);
@@ -36,18 +36,18 @@ namespace Simhub_R3E_Extra_properties_plugin.Settings
         public class Colors
         {
             public Colors() { }
-            public Colors(HSV notRun, HSV slow, HSV personalBest, HSV overallBest)
+            public Colors(Color notRun, Color slow, Color personalBest, Color overallBest)
             {
-                NotRun = notRun;
-                Slow = slow;
-                PersonalBest = personalBest;
-                OverallBest = overallBest;
+                NotRun.Color = notRun;
+                Slow.Color = slow;
+                PersonalBest.Color = personalBest;
+                OverallBest.Color = overallBest;
             }
 
-            public HSV NotRun { get; set; }
-            public HSV Slow { get; set; }
-            public HSV PersonalBest { get; set; }
-            public HSV OverallBest { get; set; }
+            public Models.Color.ExtendedColor NotRun { get; set; } = new Models.Color.ExtendedColor();
+            public Models.Color.ExtendedColor Slow { get; set; } = new Models.Color.ExtendedColor();
+            public Models.Color.ExtendedColor PersonalBest { get; set; } = new Models.Color.ExtendedColor();
+            public Models.Color.ExtendedColor OverallBest { get; set; } = new Models.Color.ExtendedColor();
         }
     }
 }

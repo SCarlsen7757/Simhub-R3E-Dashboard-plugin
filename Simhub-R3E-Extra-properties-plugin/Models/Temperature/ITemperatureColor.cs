@@ -1,4 +1,4 @@
-﻿using ColorHelper;
+﻿using System.Windows.Media;
 using SimHub.Plugins;
 
 namespace Simhub_R3E_Extra_properties_plugin.Model
@@ -8,7 +8,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Model
         /// <summary>
         /// Get color in HEX format.
         /// </summary>
-        HEX Color { get; }
+        Color TemperatureColor { get; }
         /// <summary>
         /// Add color property to Simhub
         /// </summary>

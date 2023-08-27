@@ -1,12 +1,6 @@
-﻿using ColorHelper;
-using SimHub.Plugins;
-using Simhub_R3E_Extra_properties_plugin.Extensions.ColorHelper;
-using Simhub_R3E_Extra_properties_plugin.Settings;
-using System;
+﻿using SimHub.Plugins;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
 {
@@ -22,20 +16,20 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
         private List<string> BackgroundSubfix { get => new List<string> { "Background", ColorSubFix }; }
         public void AddProperty(PluginManager pluginManager)
         {
-            pluginManager.AddProperty(FullName(FontSubfix), this.GetType(), R3EExtraProperties.SectorColorSettings.Sector.Font.NotRun.ToHEX().ToColorString());
-            pluginManager.AddProperty(FullName(BackgroundSubfix), this.GetType(), R3EExtraProperties.SectorColorSettings.Sector.Background.NotRun.ToHEX().ToColorString());
+            pluginManager.AddProperty(FullName(FontSubfix), this.GetType(), R3EExtraProperties.SectorColorSettings.Sector.Font.NotRun.Color.ToString());
+            pluginManager.AddProperty(FullName(BackgroundSubfix), this.GetType(), R3EExtraProperties.SectorColorSettings.Sector.Background.NotRun.Color.ToString());
         }
         public void SetProperty(PluginManager pluginManager)
         {
-            pluginManager.SetPropertyValue(FullName(FontSubfix), this.GetType(), Colors.Font.ToColorString());
-            pluginManager.SetPropertyValue(FullName(BackgroundSubfix), this.GetType(), Colors.Background.ToColorString());
+            pluginManager.SetPropertyValue(FullName(FontSubfix), this.GetType(), Colors.Font.Color.ToString());
+            pluginManager.SetPropertyValue(FullName(BackgroundSubfix), this.GetType(), Colors.Background.Color.ToString());
         }
 
         public class SectorColors
         {
             public SectorColors() { }
-            public HEX Font { get; set; } = new HEX("FFFFFF");
-            public HEX Background { get; set; } = new HEX("FFFFFF");
+            public Models.Color.ExtendedColor Font { get; set; } = new Models.Color.ExtendedColor();
+            public Models.Color.ExtendedColor Background { get; set; } = new Models.Color.ExtendedColor();
         }
     }
 }

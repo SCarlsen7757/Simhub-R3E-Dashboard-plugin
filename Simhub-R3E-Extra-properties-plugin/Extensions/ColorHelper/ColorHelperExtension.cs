@@ -1,21 +1,38 @@
-﻿using ColorHelper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.VisualStudio.Modeling.Diagrams;
+using System.Windows.Media;
 
-namespace Simhub_R3E_Extra_properties_plugin.Extensions.ColorHelper
+namespace Microsoft.VisualStudio.Modeling.Diagrams
 {
     public static class ColorHelperExtension
     {
-        public static HEX ToHEX(this HSV hsv)
+        public static HslColor ToHsl(this Color color)
         {
-            return ColorConverter.HsvToHex(hsv);
+            double Scale(double value, double min, double max, double minScale, double maxScale)
+            {
+                double scaled = minScale + (double)(value - min) / (max - min) * (maxScale - minScale);
+                return scaled;
+            }
+            var c = System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
+
+            var hslColor = new HslColor();
+            hslColor.Hue = (int)Scale(c.GetHue(), 0f, 360f, 0, 240);
+            hslColor.Saturation = (int)Scale(c.GetSaturation(), 0f, 1f, 0, 240);
+            hslColor.Luminosity = (int)Scale(c.GetBrightness(), 0f, 1f, 0, 240);
+
+            return hslColor;
         }
-        public static string ToColorString(this HEX hex)
+    }
+}
+
+namespace System.Windows.Media
+{
+    public static class SystemWindowsMediaColorExtension
+    {
+        public static Color ToColor(this HslColor hslColor)
         {
-            return "#" + hex.ToString();
+            var c = hslColor.ToRgbColor();
+            var newColor = new Color() { A = c.A, R = c.R, G = c.G, B = c.B };
+            return newColor;
         }
     }
 }

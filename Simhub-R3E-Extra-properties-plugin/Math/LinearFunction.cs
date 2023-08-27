@@ -14,5 +14,10 @@ namespace Simhub_R3E_Extra_properties_plugin.Math
 
             return (m * x) + b;
         }
+
+        public static double Scale(double value, double min, double max, double minScale, double maxScale)
+        {
+            return minScale + (double)(value - min) / (max - min) * (maxScale - minScale);
+        }
     }
 }

@@ -1,0 +1,192 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Simhub_R3E_Extra_properties_plugin.Settings.UI" 
+             xmlns:c ="clr-namespace:Simhub_R3E_Extra_properties_plugin.Models.Color"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Simhub_R3E_Extra_properties_plugin.Settings.UI.TyreAndBrakeColorSettingsUI" 
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="800">
+    <UserControl.Resources>
+        <c:HueToColorConverter x:Key="HueToColorConverter"/>
+        <xctk:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter"/>
+    </UserControl.Resources>
+    <WrapPanel>
+        <GroupBox Header="Hue">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="1" Grid.Row="0" Content="Cold" Margin="5"/>
+                <Slider x:Name="SliderCold" 
+                Grid.Column="2" 
+                Grid.Row="0" 
+                MinWidth="150" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Margin="5" 
+                Interval="1" 
+                Minimum="0"
+                Maximum="360" 
+                Value="{Binding Colors.Cold.Color, Converter={StaticResource HueToColorConverter}}"/>
+                <Rectangle Grid.Column="3" Grid.Row="0" 
+                   Margin="5"
+                   MinWidth="75" 
+                   Fill="{Binding Colors.Cold.Color, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
+
+                <Label Grid.Column="1" Grid.Row="1" Content="Optimal" Margin="5"/>
+                <Slider x:Name="SliderOptimal" 
+            Grid.Column="2" 
+            Grid.Row="1" 
+            MinWidth="150" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Margin="5" 
+            Interval="1" 
+            Minimum="0"
+            Maximum="360" 
+            Value="{Binding Colors.Optimal.Color, Converter={StaticResource HueToColorConverter}}"/>
+                <Rectangle Grid.Column="3" Grid.Row="1" 
+            Margin="5"
+            MinWidth="75" 
+            Fill="{Binding Colors.Optimal.Color, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
+
+                <Label Grid.Column="1" Grid.Row="2" Content="Hot" Margin="5"/>
+                <Slider x:Name="SliderHot" 
+            Grid.Column="2" 
+            Grid.Row="2" 
+            MinWidth="150" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Margin="5" 
+            Interval="1" 
+            Minimum="0"
+            Maximum="360" 
+            Value="{Binding Colors.Hot.Color, Converter={StaticResource HueToColorConverter}}"/>
+                <Rectangle Grid.Column="3" Grid.Row="2" 
+            Margin="5"
+            MinWidth="75" 
+            Fill="{Binding Colors.Hot.Color, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Relative brake temperature">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="1" Grid.Row="1" Content="Cold"  
+                    Margin="5"
+                    VerticalContentAlignment="Center"/>
+                <TextBox Grid.Column="2" Grid.Row="1" PreviewTextInput="NumberValidationTextBox"
+                    MinWidth="50"
+                    Margin="5"
+                    Text="{Binding BrakesTemperature.Min, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Grid.Column="1" Grid.Row="2" Content="Hot"  
+                    Margin="5"
+                    VerticalContentAlignment="Center"/>
+                <TextBox Grid.Column="2" Grid.Row="2" PreviewTextInput="NumberValidationTextBox"
+                    MinWidth="50"
+                    Margin="5"
+                    Text="{Binding BrakesTemperature.Max, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Grid.Column="1" Grid.Row="3" Content="Optimal lower"  
+                    Margin="5"
+                    VerticalContentAlignment="Center"/>
+                <TextBox Grid.Column="2" Grid.Row="3" PreviewTextInput="NumberValidationTextBox"
+                    MinWidth="50"
+                    Margin="5"
+                    Text="{Binding BrakesTemperature.Range.Lower, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Grid.Column="1" Grid.Row="4" Content="Optimal upper"  
+                    Margin="5"
+                    VerticalContentAlignment="Center"/>
+                <TextBox Grid.Column="2" Grid.Row="4" PreviewTextInput="NumberValidationTextBox"
+                    MinWidth="50"
+                    Margin="5"
+                    Text="{Binding BrakesTemperature.Range.Upper, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Relative tyre temperature">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="1" Grid.Row="1" Content="Cold"  
+                    Margin="5"
+                    VerticalContentAlignment="Center"/>
+                <TextBox Grid.Column="2" Grid.Row="1" PreviewTextInput="NumberValidationTextBox"
+                    MinWidth="50"
+                    Margin="5"
+                    Text="{Binding TyresTemperature.Min, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Grid.Column="1" Grid.Row="2" Content="Hot"  
+                    Margin="5"
+                    VerticalContentAlignment="Center"/>
+                <TextBox Grid.Column="2" Grid.Row="2" PreviewTextInput="NumberValidationTextBox"
+                    MinWidth="50"
+                    Margin="5"
+                    Text="{Binding TyresTemperature.Max, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Grid.Column="1" Grid.Row="3" Content="Optimal lower"  
+                    Margin="5"
+                    VerticalContentAlignment="Center"/>
+                <TextBox Grid.Column="2" Grid.Row="3" PreviewTextInput="NumberValidationTextBox"
+                    MinWidth="50"
+                    Margin="5"
+                    Text="{Binding TyresTemperature.Range.Lower, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Grid.Column="1" Grid.Row="4" Content="Optimal upper"  
+                    Margin="5"
+                    VerticalContentAlignment="Center"/>
+                <TextBox Grid.Column="2" Grid.Row="4" PreviewTextInput="NumberValidationTextBox"
+                    MinWidth="50"
+                    Margin="5"
+                    Text="{Binding TyresTemperature.Range.Upper, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+        </GroupBox>
+    </WrapPanel>
+</UserControl>

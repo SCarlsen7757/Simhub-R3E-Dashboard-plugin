@@ -36,10 +36,10 @@ namespace Simhub_R3E_Extra_properties_plugin.Models
             this._newCar = false;
             R3E.Data.Shared data = (R3E.Data.Shared)rawData;
 
-            this.Front.Left.UpdatedTemperatureSettings(data.TireTemp.FrontLeft.OptimalTemp, R3EExtraProperties.ColorSettings.TyresTemperature);
-            this.Front.Right.UpdatedTemperatureSettings(data.TireTemp.FrontRight.OptimalTemp, R3EExtraProperties.ColorSettings.TyresTemperature);
-            this.Rear.Left.UpdatedTemperatureSettings(data.TireTemp.RearLeft.OptimalTemp, R3EExtraProperties.ColorSettings.TyresTemperature);
-            this.Rear.Right.UpdatedTemperatureSettings(data.TireTemp.RearRight.OptimalTemp, R3EExtraProperties.ColorSettings.TyresTemperature);
+            this.Front.Left.UpdatedTemperatureSettings(data.TireTemp.FrontLeft.OptimalTemp, R3EExtraProperties.TyreAndBrakeColorSettings.TyresTemperature);
+            this.Front.Right.UpdatedTemperatureSettings(data.TireTemp.FrontRight.OptimalTemp, R3EExtraProperties.TyreAndBrakeColorSettings.TyresTemperature);
+            this.Rear.Left.UpdatedTemperatureSettings(data.TireTemp.RearLeft.OptimalTemp, R3EExtraProperties.TyreAndBrakeColorSettings.TyresTemperature);
+            this.Rear.Right.UpdatedTemperatureSettings(data.TireTemp.RearRight.OptimalTemp, R3EExtraProperties.TyreAndBrakeColorSettings.TyresTemperature);
         }
 
         public void Update(StatusDataBase data, PluginManager pluginManager)

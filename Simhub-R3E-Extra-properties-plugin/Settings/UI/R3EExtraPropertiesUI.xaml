@@ -1,0 +1,30 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Simhub_R3E_Extra_properties_plugin.Settings.UI"
+             
+             xmlns:Settings="clr-namespace:Simhub_R3E_Extra_properties_plugin.Settings" xmlns:Simhub_R3E_Extra_properties_plugin="clr-namespace:Simhub_R3E_Extra_properties_plugin" x:Class="Simhub_R3E_Extra_properties_plugin.Settings.UI.R3EExtraPropertiesUI"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TabControl>
+            <TabItem Header="Sector">
+                <local:SectorColorSettingsUI x:Name="SectorColorSettingsUI"/>
+            </TabItem>
+            <TabItem Header="Tyres &amp; brakes">
+                <local:TyreAndBrakeColorSettingsUI x:Name="TyreAndBrakeColorSettingsUI"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
