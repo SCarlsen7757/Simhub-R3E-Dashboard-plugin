@@ -1,6 +1,5 @@
 ﻿using SimHub.Plugins;
 using System.Collections.Generic;
-using System.Windows.Media;
 
 namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
 {

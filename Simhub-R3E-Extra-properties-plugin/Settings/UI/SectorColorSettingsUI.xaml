@@ -32,6 +32,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
 
                 </Grid.RowDefinitions>
@@ -128,24 +129,51 @@
                     Foreground="{Binding Sector.Font.PersonalBest.Color, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                     Background="{Binding Sector.Background.PersonalBest.Color, Mode=OneTime, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"/>
 
-                <Label Grid.Column="1" Grid.Row="5" Content="Overall best" Margin="0,5"/>
-                <toolkit:ColorPicker x:Name="ColorPickerOverallFont" 
+                <Label Grid.Column="1" Grid.Row="5" Content="Overall Class best" Margin="0,5"/>
+                <toolkit:ColorPicker x:Name="ColorPickerOverallClassFont" 
                     Grid.Column="2" 
                     Grid.Row="5" 
+                    Margin="5,5"
+                    MaxHeight="30"
+                    Width="75"
+                    SelectedColor="{Binding Sector.Font.OverallClassBest.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <toolkit:ColorPicker x:Name="ColorPickerOverallClassBackground" 
+                    Grid.Column="3" 
+                    Grid.Row="5"
+                    Margin="5,5"
+                    MaxHeight="30"
+                    Width="75"
+                    SelectedColor="{Binding Sector.Background.OverallClassBest.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Label x:Name="TextBlockOverallClass"
+                    Grid.Column="4"
+                    Grid.Row="5"
+                    Margin="5,5"
+                    Padding="15,5"
+                    MinWidth="50"
+                    FontWeight="Bold"
+                    HorizontalContentAlignment="Center" 
+                    Content="{Binding Text, ElementName=TextBoxSampleText}"
+                    Foreground="{Binding Sector.Font.OverallClassBest.Color, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
+                    Background="{Binding Sector.Background.OverallClassBest.Color, Mode=OneTime, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"/>
+
+                <Label Grid.Column="1" Grid.Row="6" Content="Overall best" Margin="0,5"/>
+                <toolkit:ColorPicker x:Name="ColorPickerOverallFont" 
+                    Grid.Column="2" 
+                    Grid.Row="6" 
                     Margin="5,5"
                     MaxHeight="30"
                     Width="75"
                     SelectedColor="{Binding Sector.Font.OverallBest.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <toolkit:ColorPicker x:Name="ColorPickerOverallBackground" 
                     Grid.Column="3" 
-                    Grid.Row="5"
+                    Grid.Row="6"
                     Margin="5,5"
                     MaxHeight="30"
                     Width="75"
                     SelectedColor="{Binding Sector.Background.OverallBest.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label x:Name="TextBlockOverall"
                     Grid.Column="4"
-                    Grid.Row="5"
+                    Grid.Row="6"
                     Margin="5,5"
                     Padding="15,5"
                     MinWidth="50"

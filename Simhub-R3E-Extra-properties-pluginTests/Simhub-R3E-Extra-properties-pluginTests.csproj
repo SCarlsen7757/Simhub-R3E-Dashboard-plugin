@@ -71,6 +71,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Math\LinearFunctionTests.cs" />
+    <Compile Include="Models\BrakeBiasOffset\R3EBrakeBiasOffsetTests.cs" />
     <Compile Include="Models\Color\ExtendedColorTests.cs" />
     <Compile Include="Models\PrefixTests.cs" />
     <Compile Include="Models\Sector\SectorColorTests.cs" />

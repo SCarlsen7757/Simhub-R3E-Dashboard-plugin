@@ -97,6 +97,7 @@
   <ItemGroup>
     <Compile Include="Extensions\ColorHelper\ColorHelperExtension.cs" />
     <Compile Include="Math\LinearFunction.cs" />
+    <Compile Include="Models\Brakes\BrakeBiasOffset\R3EBrakeBiasOffset.cs" />
     <Compile Include="Models\Color\ExtendedColor.cs" />
     <Compile Include="Models\Color\HueToColorConverter.cs" />
     <Compile Include="Models\ISimhub.cs" />

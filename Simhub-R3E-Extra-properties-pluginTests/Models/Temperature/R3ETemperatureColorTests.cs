@@ -1,21 +1,49 @@
-﻿using System.Windows.Media;
+﻿using System.Collections.Generic;
+using System.Windows.Media;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Simhub_R3E_Extra_properties_plugin.Settings;
 
 namespace Simhub_R3E_Extra_properties_plugin.Model.Tests
 {
+    /// <summary>
+    /// Test class to test abstract <see cref="TemperatureInformation"/>.
+    /// </summary>
+    public class TestTemperatureInformation : TemperatureInformation
+    {
+        public TestTemperatureInformation() : base() { }
+        public TestTemperatureInformation(List<string> prefix) : base(prefix) { }
+        public TestTemperatureInformation(List<string> prefixList, string prefix) { }
+    }
     [TestClass()]
     public class R3ETemperatureColorTests
     {
+        [TestMethod()]
+        public void R3ETemperatureColorTest()
+        {
+            TestTemperatureInformation temperatureInformation;
+
+            temperatureInformation = new TestTemperatureInformation();
+            Assert.IsInstanceOfType(temperatureInformation, typeof(TemperatureInformation));
+
+            List<string> prefixList = new List<string>() {"Test", "One" };
+
+            temperatureInformation = new TestTemperatureInformation(prefixList);
+            Assert.IsInstanceOfType(temperatureInformation, typeof(TemperatureInformation));
+
+            temperatureInformation = new TestTemperatureInformation(prefixList, "Class");
+            Assert.IsInstanceOfType(temperatureInformation,typeof(TemperatureInformation));
+        }
         [TestMethod()]
         public void ColorConverterTest()
         {
             Color resultColor;
             Color expectedColor;
-            double temperature;
-            Optimal optimal = new Optimal(100, 90, 110);
+            double optimal = 100;
             double min = 0;
             double max = 200;
+
+
+            TestTemperatureInformation temperatureInformation = new TestTemperatureInformation() { Optimal = optimal, Min = min, Max = max };
 
             var coldColor = new Color() { A = 255, R = 0, G = 255, B = 255 };
             var optiColor = new Color() { A = 255, R = 0, G = 255, B = 0 };
@@ -26,71 +54,49 @@ namespace Simhub_R3E_Extra_properties_plugin.Model.Tests
             colorSettings.Optimal.Color = optiColor;
             colorSettings.Hot.Color = hotColor;
 
-
             //Cold test
-            temperature = 0;
+            temperatureInformation.Temperature = 0;
             expectedColor = coldColor;
-            resultColor = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<Color>(expectedColor, resultColor);
+            resultColor = R3ETemperatureColor.ColorConverter(temperatureInformation, colorSettings);
+            Assert.AreEqual<Color>(expectedColor, resultColor, "Cold color test failed.");
 
             //Semi cold test
-            temperature = 45;
+            temperatureInformation.Temperature = 50;
             expectedColor = new Color() { A = 255, R = 0, G = 255, B = 128 };
-            resultColor = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<Color>(expectedColor, resultColor);
+            resultColor = R3ETemperatureColor.ColorConverter(temperatureInformation, colorSettings);
+            Assert.AreEqual<Color>(expectedColor, resultColor, "Semi cold color test failed.");
 
-            //Lower optimal test
-            temperature = 90;
-            expectedColor = optiColor;
-            resultColor = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<Color>(expectedColor, resultColor);
             //Optimal test
-            temperature = 100;
+            temperatureInformation.Temperature = 100;
             expectedColor = optiColor;
-            resultColor = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<Color>(expectedColor, resultColor);
-            //Upper optimal test
-            temperature = 110;
-            expectedColor = optiColor;
-            resultColor = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<Color>(expectedColor, resultColor);
+            resultColor = R3ETemperatureColor.ColorConverter(temperatureInformation, colorSettings);
+            Assert.AreEqual<Color>(expectedColor, resultColor, "Optimal color test failed.");
 
             //Semi hot test
-            temperature = 155;
+            temperatureInformation.Temperature = 150;
             expectedColor = new Color() { A = 255, R = 255, G = 255, B = 0 };
-            resultColor = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<Color>(expectedColor, resultColor);
+            resultColor = R3ETemperatureColor.ColorConverter(temperatureInformation, colorSettings);
+            Assert.AreEqual<Color>(expectedColor, resultColor, "Semi hot color test failed.");
 
             //Hot test
-            temperature = 200;
+            temperatureInformation.Temperature = 200;
             expectedColor = hotColor;
-            resultColor = R3ETemperatureColor.ColorConverter(temperature, optimal, min, max, colorSettings);
-            Assert.AreEqual<Color>(expectedColor, resultColor);
+            resultColor = R3ETemperatureColor.ColorConverter(temperatureInformation, colorSettings);
+            Assert.AreEqual<Color>(expectedColor, resultColor, "Hot color test failed.");
         }
 
         [TestMethod()]
         public void UpdatedTemperatureSettingsTest()
         {
             R3ETemperatureColor temperatureColor = new R3ETemperatureColor();
-            TyreAndBrakeColorSettings.TemperatureValues temperatureValues;
-            double optimalTemperature;
+            double optimal = 100;
+            double min = 0;
+            double max = 200;
 
-
-            //Test 1 with relative values
-            temperatureValues = new TyreAndBrakeColorSettings.TemperatureValues();
-            temperatureValues.Min = 50;
-            temperatureValues.Max = 100;
-            temperatureValues.Range.Lower = 50;
-            temperatureValues.Range.Upper = 30;
-
-            optimalTemperature = 500;
-
-            temperatureColor.UpdatedTemperatureSettings(optimalTemperature, temperatureValues);
-            Assert.AreEqual<double>(400, temperatureColor.Min);
-            Assert.AreEqual<double>(630, temperatureColor.Max);
-            Assert.AreEqual<double>(450, temperatureColor.Optimal.Range.Lower);
-            Assert.AreEqual<double>(530, temperatureColor.Optimal.Range.Upper);
-            Assert.AreEqual<double>(500, temperatureColor.Optimal.Value);
+            temperatureColor.UpdatedTemperatureSettings(optimal, min, max);
+            Assert.AreEqual<double>(min, temperatureColor.Min, "Min temp not correct.");
+            Assert.AreEqual<double>(max, temperatureColor.Max, "Max temp not correct.");
+            Assert.AreEqual<double>(optimal, temperatureColor.Optimal, "Optimal temp not correct.");
         }
     }
 }

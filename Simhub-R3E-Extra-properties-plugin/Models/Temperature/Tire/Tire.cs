@@ -1,11 +1,6 @@
-﻿using GameReaderCommon;
+﻿using R3E.Data;
 using SimHub.Plugins;
-using Simhub_R3E_Extra_properties_plugin.Settings;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Simhub_R3E_Extra_properties_plugin.Models.Temperature.Tire
 {
@@ -31,11 +26,11 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Temperature.Tire
         {
             ColorOMITemperature.SetProperty(pluginManager);
         }
-        public void UpdatedTemperatureSettings(double optimalTemperature, TyreAndBrakeColorSettings.TemperatureValues settings)
+        public void UpdatedTemperatureSettings(TireTempInformation temps)
         {
-            ColorOMITemperature.Outer.UpdatedTemperatureSettings(optimalTemperature, settings);
-            ColorOMITemperature.Middle.UpdatedTemperatureSettings(optimalTemperature, settings);
-            ColorOMITemperature.Inner.UpdatedTemperatureSettings(optimalTemperature, settings);
+            ColorOMITemperature.Outer.UpdatedTemperatureSettings(temps.OptimalTemp, temps.ColdTemp, temps.HotTemp);
+            ColorOMITemperature.Middle.UpdatedTemperatureSettings(temps.OptimalTemp, temps.ColdTemp, temps.HotTemp);
+            ColorOMITemperature.Inner.UpdatedTemperatureSettings(temps.OptimalTemp, temps.ColdTemp, temps.HotTemp);
         }
     }
 }

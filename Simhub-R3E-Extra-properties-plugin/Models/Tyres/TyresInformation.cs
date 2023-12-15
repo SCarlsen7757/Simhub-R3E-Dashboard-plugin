@@ -13,8 +13,6 @@ namespace Simhub_R3E_Extra_properties_plugin.Models
             this.Rear = new LeftRightSet<Tire>(this._prefix, nameof(Rear));
         }
 
-        private bool _newCar = false;
-        private string _carId = string.Empty;
         public void Init(PluginManager pluginManager)
         {
             pluginManager.DataUpdated += PluginManager_DataUpdated;
@@ -33,23 +31,17 @@ namespace Simhub_R3E_Extra_properties_plugin.Models
         private void CalcOptimalTemperature(object rawData)
         {
             if (!(rawData is R3E.Data.Shared)) return;
-            this._newCar = false;
             R3E.Data.Shared data = (R3E.Data.Shared)rawData;
 
-            this.Front.Left.UpdatedTemperatureSettings(data.TireTemp.FrontLeft.OptimalTemp, R3EExtraProperties.TyreAndBrakeColorSettings.TyresTemperature);
-            this.Front.Right.UpdatedTemperatureSettings(data.TireTemp.FrontRight.OptimalTemp, R3EExtraProperties.TyreAndBrakeColorSettings.TyresTemperature);
-            this.Rear.Left.UpdatedTemperatureSettings(data.TireTemp.RearLeft.OptimalTemp, R3EExtraProperties.TyreAndBrakeColorSettings.TyresTemperature);
-            this.Rear.Right.UpdatedTemperatureSettings(data.TireTemp.RearRight.OptimalTemp, R3EExtraProperties.TyreAndBrakeColorSettings.TyresTemperature);
+            this.Front.Left.UpdatedTemperatureSettings(data.TireTemp.FrontLeft);
+            this.Front.Right.UpdatedTemperatureSettings(data.TireTemp.FrontRight);
+            this.Rear.Left.UpdatedTemperatureSettings(data.TireTemp.RearLeft);
+            this.Rear.Right.UpdatedTemperatureSettings(data.TireTemp.RearRight);
         }
 
         public void Update(StatusDataBase data, PluginManager pluginManager)
         {
-            if (data.CarId != this._carId)
-            {
-                this._carId = data.CarId;
-                this._newCar = true;
-            }
-            if (this._newCar) this.CalcOptimalTemperature(data.GetRawDataObject());
+            this.CalcOptimalTemperature(data.GetRawDataObject());
             this.UpdateTemperature(data, pluginManager);
         }
         private void UpdateTemperature(StatusDataBase data, PluginManager pluginManager)

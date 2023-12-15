@@ -4,7 +4,6 @@ using Simhub_R3E_Extra_properties_plugin.Models;
 using Simhub_R3E_Extra_properties_plugin.Models.Sector;
 using Simhub_R3E_Extra_properties_plugin.Settings;
 using System;
-using System.Runtime.CompilerServices;
 using System.Windows.Media;
 
 namespace Simhub_R3E_Extra_properties_plugin

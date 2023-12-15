@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Simhub_R3E_Extra_properties_plugin.Models
 {
@@ -13,7 +9,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Models
         public Prefix() { }
         public Prefix(string prefix)
         {
-            this._prefix.Add(prefix);
+            this._prefix.Add(prefix.Trim());
         }
         public Prefix(in List<string> prefixList)
         {
@@ -22,16 +18,16 @@ namespace Simhub_R3E_Extra_properties_plugin.Models
         public Prefix(in List<string> prefixList, string prefix)
         {
             this._prefix = prefixList.ToList();
-            this._prefix.Add(prefix);
+            this._prefix.Add(prefix.Trim());
         }
         public string FullPrefix { get => string.Join(".", _prefix); }
 
-        public string FullName(string subfix)
+        public string FullName(in string subfix)
         {
             string fullPrefix = FullPrefix;
-            if (string.IsNullOrEmpty(fullPrefix)) return subfix;
-            else if (string.IsNullOrEmpty(subfix)) return fullPrefix;
-            return string.Join(".", fullPrefix, subfix);
+            if (string.IsNullOrWhiteSpace(fullPrefix)) return subfix.Trim();
+            else if (string.IsNullOrWhiteSpace(subfix)) return fullPrefix;
+            return string.Join(".", fullPrefix, subfix.Trim());
         }
         public string FullName(List<string> subfixList)
         {
