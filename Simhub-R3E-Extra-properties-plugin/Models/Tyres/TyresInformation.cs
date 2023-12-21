@@ -1,6 +1,7 @@
 ﻿using GameReaderCommon;
 using SimHub.Plugins;
 using Simhub_R3E_Extra_properties_plugin.Models.Temperature.Tire;
+using System.Windows.Markup;
 
 namespace Simhub_R3E_Extra_properties_plugin.Models
 {
@@ -19,31 +20,24 @@ namespace Simhub_R3E_Extra_properties_plugin.Models
             this.Front.AddProperty(pluginManager);
             this.Rear.AddProperty(pluginManager);
         }
-        public void PluginManager_DataUpdated(ref GameData data, PluginManager manager)
+        public void PluginManager_DataUpdated(ref GameData data, PluginManager pluginManager)
         {
             if (!data.GameRunning || !R3EExtraProperties.SupportedGame(data)) return;
-            this.Update(data.NewData, manager);
+            this.CalcOptimalTemperature((R3E.Data.Shared)data.NewData.GetRawDataObject());
+            this.UpdateTemperature(data.NewData, pluginManager);
         }
 
         public LeftRightSet<Tire> Front { get; set; }
         public LeftRightSet<Tire> Rear { get; set; }
 
-        private void CalcOptimalTemperature(object rawData)
+        private void CalcOptimalTemperature(R3E.Data.Shared data)
         {
-            if (!(rawData is R3E.Data.Shared)) return;
-            R3E.Data.Shared data = (R3E.Data.Shared)rawData;
-
             this.Front.Left.UpdatedTemperatureSettings(data.TireTemp.FrontLeft);
             this.Front.Right.UpdatedTemperatureSettings(data.TireTemp.FrontRight);
             this.Rear.Left.UpdatedTemperatureSettings(data.TireTemp.RearLeft);
             this.Rear.Right.UpdatedTemperatureSettings(data.TireTemp.RearRight);
         }
 
-        public void Update(StatusDataBase data, PluginManager pluginManager)
-        {
-            this.CalcOptimalTemperature(data.GetRawDataObject());
-            this.UpdateTemperature(data, pluginManager);
-        }
         private void UpdateTemperature(StatusDataBase data, PluginManager pluginManager)
         {
             Front.Left.ColorOMITemperature.Outer.Temperature = data.TyreTemperatureFrontLeftOuter;

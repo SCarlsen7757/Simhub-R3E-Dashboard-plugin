@@ -27,10 +27,11 @@ namespace Simhub_R3E_Extra_properties_plugin.Models
             Rear.AddProperty(pluginManager);
         }
 
-        public void PluginManager_DataUpdated(ref GameData data, PluginManager manager)
+        public void PluginManager_DataUpdated(ref GameData data, PluginManager pluginManager)
         {
             if (!data.GameRunning || !R3EExtraProperties.SupportedGame(data)) return;
-            this.Update(data.NewData, manager);
+            this.CalcOptimalTemperature((R3E.Data.Shared)data.NewData.GetRawDataObject());
+            this.UpdateTemperature(data.NewData, pluginManager);
         }
 
         private void CalcOptimalTemperature(R3E.Data.Shared data)
@@ -41,11 +42,6 @@ namespace Simhub_R3E_Extra_properties_plugin.Models
             this.Rear.Right.UpdatedTemperatureSettings(data.BrakeTemp.RearRight);
         }
 
-        private void Update(StatusDataBase data, PluginManager pluginManager)
-        {
-            this.CalcOptimalTemperature((R3E.Data.Shared)data.GetRawDataObject());
-            this.UpdateTemperature(data, pluginManager);
-        }
         private void UpdateTemperature(StatusDataBase data, PluginManager pluginManager)
         {
             Front.Left.ColorTemperature.Temperature = data.BrakeTemperatureFrontLeft;
