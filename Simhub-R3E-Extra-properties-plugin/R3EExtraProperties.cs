@@ -1,6 +1,7 @@
 ﻿using GameReaderCommon;
 using SimHub.Plugins;
 using Simhub_R3E_Extra_properties_plugin.Models;
+using Simhub_R3E_Extra_properties_plugin.Models.DriverData;
 using Simhub_R3E_Extra_properties_plugin.Models.Sector;
 using Simhub_R3E_Extra_properties_plugin.Settings;
 using System;
@@ -34,6 +35,7 @@ namespace Simhub_R3E_Extra_properties_plugin
         private readonly TyresInformation _tyres = new TyresInformation();
         private readonly BrakesInformation _brakes = new BrakesInformation();
         private readonly SectorsInformation _sectors = new SectorsInformation();
+        private readonly R3EDriverData _driverData = new R3EDriverData();
         /// <summary>
         /// Instance of the current plugin manager
         /// </summary>
@@ -96,6 +98,7 @@ namespace Simhub_R3E_Extra_properties_plugin
             this._brakes.Init(PluginManager);
             this._tyres.Init(PluginManager);
             this._sectors.Init(PluginManager);
+            this._driverData.Init(PluginManager);
             SimHub.Logging.Current.Info("Plugin started");
         }
     }

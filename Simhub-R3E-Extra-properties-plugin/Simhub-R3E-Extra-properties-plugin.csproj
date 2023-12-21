@@ -100,6 +100,7 @@
     <Compile Include="Models\Brakes\BrakeBiasOffset\R3EBrakeBiasOffset.cs" />
     <Compile Include="Models\Color\ExtendedColor.cs" />
     <Compile Include="Models\Color\HueToColorConverter.cs" />
+    <Compile Include="Models\DriverData\R3EDriverData.cs" />
     <Compile Include="Models\ISimhub.cs" />
     <Compile Include="Models\ISimhubProperty.cs" />
     <Compile Include="Models\Prefix.cs" />
