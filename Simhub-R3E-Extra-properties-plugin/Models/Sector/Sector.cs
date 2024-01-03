@@ -33,40 +33,55 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
             switch (this.sectorNumber)
             {
                 case SectorsInformation.ESector.S1:
-                    if (!lastLap)
-                    {
-                        if (data.NewData.Sector1Time != null) { time.New = (TimeSpan)data.NewData.Sector1Time; }
-                        if (data.OldData != null && data.OldData.Sector1LastLapTime != null) { time.Last = (TimeSpan)data.OldData.Sector1LastLapTime; }
-                    }
-                    else
-                    {
-                        if (data.NewData.Sector1LastLapTime != null) time.New = (TimeSpan)data.NewData.Sector1LastLapTime;
-                        if (data.OldData != null && data.OldData.Sector1LastLapTime != null) { time.Last = (TimeSpan)data.OldData.Sector1LastLapTime; }
-                    }
 
                     time.PersonalBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeSelf.Sector1);
                     time.OverallClassBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeLeaderClass.Sector1);
                     time.OverallBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeLeader.Sector1);
-                    break;
 
-                case SectorsInformation.ESector.S2:
                     if (!lastLap)
                     {
-                        if (data.NewData.Sector2Time != null) { time.New = (TimeSpan)data.NewData.Sector2Time; }
-                        if (data.OldData != null && data.OldData.Sector2LastLapTime != null) { time.Last = (TimeSpan)data.OldData.Sector2LastLapTime; }
+                        if (data.NewData.Sector1Time != null) { time.New = (TimeSpan)data.NewData.Sector1Time; }
+                        if (data.OldData == null) break;
+                        if (data.NewData.SessionTypeName != data.OldData.SessionTypeName) break; //Break if new data and old data are from 2 different sessions.
+                        if (data.OldData.Sector1LastLapTime != null) { time.Last = (TimeSpan)data.OldData.Sector1LastLapTime; }
                     }
                     else
                     {
-                        if (data.NewData.Sector2LastLapTime != null) time.New = (TimeSpan)data.NewData.Sector2LastLapTime;
-                        if (data.OldData != null && data.OldData.Sector2LastLapTime != null) { time.Last = (TimeSpan)data.OldData.Sector2LastLapTime; }
+                        if (data.NewData.Sector1LastLapTime != null) time.New = (TimeSpan)data.NewData.Sector1LastLapTime;
+                        if (data.OldData == null) break;
+                        if (data.OldData.Sector1LastLapTime != null) { time.Last = (TimeSpan)data.OldData.Sector1LastLapTime; }
                     }
+                    break;
+
+                case SectorsInformation.ESector.S2:
 
                     time.PersonalBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeSelf.Sector2);
                     time.OverallClassBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeLeaderClass.Sector2);
                     time.OverallBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeLeader.Sector2);
+
+                    if (!lastLap)
+                    {
+                        if (data.NewData.Sector2Time != null) { time.New = (TimeSpan)data.NewData.Sector2Time; }
+                        if (data.OldData == null) break;
+                        if (data.NewData.SessionTypeName != data.OldData.SessionTypeName) break;//Break if new data and old data are from 2 different sessions.
+                        if (data.OldData.Sector2LastLapTime != null) { time.Last = (TimeSpan)data.OldData.Sector2LastLapTime; }
+                    }
+                    else
+                    {
+                        if (data.NewData.Sector2LastLapTime != null) time.New = (TimeSpan)data.NewData.Sector2LastLapTime;
+                        if (data.OldData == null) break;
+                        if (data.OldData.Sector2LastLapTime != null) { time.Last = (TimeSpan)data.OldData.Sector2LastLapTime; }
+                    }
+
                     break;
 
                 case SectorsInformation.ESector.S3:
+
+                    if (!lastLap) break;//Don't provide data if it's not for the previous lap.
+
+                    time.PersonalBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeSelf.Sector3);
+                    time.OverallClassBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeLeaderClass.Sector3);
+                    time.OverallBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeLeader.Sector3);
 
                     if(data.NewData != null && data.NewData.Sector3LastLapTime != null)
                     {
@@ -85,9 +100,6 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
                     {
                         time.Last = default;
                     }
-                    time.PersonalBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeSelf.Sector3);
-                    time.OverallClassBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeLeaderClass.Sector3);
-                    time.OverallBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeLeader.Sector3);
                     break;
             }
 
