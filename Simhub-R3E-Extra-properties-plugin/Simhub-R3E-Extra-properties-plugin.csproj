@@ -117,6 +117,7 @@
     <Compile Include="Models\Temperature\ITemperature.cs" />
     <Compile Include="Models\Temperature\ITemperatureColor.cs" />
     <Compile Include="Models\LeftRightSet.cs" />
+    <Compile Include="Models\Temperature\Tire\R3ETyreAge.cs" />
     <Compile Include="Models\Temperature\Tire\OMITemperatureInformation.cs" />
     <Compile Include="Models\Temperature\TemperatureInformation.cs" />
     <Compile Include="Models\Temperature\R3ETemperatureColor.cs" />

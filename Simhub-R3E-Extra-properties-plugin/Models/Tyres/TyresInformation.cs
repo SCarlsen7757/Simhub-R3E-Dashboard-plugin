@@ -25,6 +25,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Models
             if (!data.GameRunning || !R3EExtraProperties.SupportedGame(data)) return;
             this.CalcOptimalTemperature((R3E.Data.Shared)data.NewData.GetRawDataObject());
             this.UpdateTemperature(data.NewData, pluginManager);
+            this.UpdateAge(ref data, pluginManager);
         }
 
         public LeftRightSet<Tire> Front { get; set; }
@@ -58,6 +59,14 @@ namespace Simhub_R3E_Extra_properties_plugin.Models
 
             this.Front.SetProperty(pluginManager);
             this.Rear.SetProperty(pluginManager);
+        }
+        private void UpdateAge(ref GameData data, PluginManager pluginManager)
+        {
+            if(data.NewData == null) return;
+            Front.Right.Age.UpdateData(ref data, pluginManager, data.OldData?.TyreWearFrontRight, data.NewData.TyreWearFrontRight);
+            Front.Left.Age.UpdateData(ref data, pluginManager, data.OldData?.TyreWearFrontLeft, data.NewData.TyreWearFrontLeft);
+            Rear.Right.Age.UpdateData(ref data, pluginManager, data.OldData?.TyreWearRearRight, data.NewData.TyreWearRearRight);
+            Rear.Left.Age.UpdateData(ref data, pluginManager, data.OldData?.TyreWearRearLeft, data.NewData.TyreWearRearLeft);
         }
     }
 }
