@@ -1,6 +1,5 @@
 ﻿using GameReaderCommon;
 using SimHub.Plugins;
-using Simhub_R3E_Extra_properties_plugin.Model;
 using System.Collections.Generic;
 
 

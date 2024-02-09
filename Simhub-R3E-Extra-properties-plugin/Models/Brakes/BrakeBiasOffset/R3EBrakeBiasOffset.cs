@@ -1,7 +1,7 @@
 ﻿using GameReaderCommon;
 using SimHub.Plugins;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
 namespace Simhub_R3E_Extra_properties_plugin.Models.BrakeBiasOffset
 {

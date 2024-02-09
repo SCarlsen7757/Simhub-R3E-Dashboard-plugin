@@ -1,7 +1,6 @@
 ﻿using GameReaderCommon;
 using SimHub.Plugins;
 using Simhub_R3E_Extra_properties_plugin.Models.Temperature.Tire;
-using System.Windows.Markup;
 
 namespace Simhub_R3E_Extra_properties_plugin.Models
 {
