@@ -67,7 +67,9 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.BrakeBiasOffset
 
         private void SaveBrakeBias(PluginManager pluginManager)
         {
-            baseBrakeBias = pluginManager.Status.NewData.BrakeBias;
+            var newData = pluginManager.Status.NewData;
+            if(newData == null) return;
+            baseBrakeBias = newData.BrakeBias;
         }
 
         private void ClearBrakeBias()
