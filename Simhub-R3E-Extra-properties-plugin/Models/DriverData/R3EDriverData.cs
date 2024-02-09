@@ -18,7 +18,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.DriverData
 
         public void PluginManager_DataUpdated(ref GameData data, PluginManager pluginManager)
         {
-            if (!data.GameRunning || !R3EExtraProperties.SupportedGame(data)) return;
+            if (!data.GameRunning || !R3EExtraProperties.SupportedGame(ref data)) return;
 
             _carsOnTrack = 0;
             _carsInPitLane = 0;

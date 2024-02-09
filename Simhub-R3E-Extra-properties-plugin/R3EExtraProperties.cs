@@ -27,7 +27,7 @@ namespace Simhub_R3E_Extra_properties_plugin
             }
         }
 
-        public static bool SupportedGame(GameData data)
+        public static bool SupportedGame(ref GameData data)
         {
             return data.GameName == SupportedGameName;
         }
@@ -59,7 +59,7 @@ namespace Simhub_R3E_Extra_properties_plugin
         /// <param name="data">Current game data, including current and previous data frame.</param>
         public void DataUpdate(PluginManager pluginManager, ref GameData data)
         {
-            if (!data.GameRunning || data.GameName != SupportedGameName) return;
+            if (!data.GameRunning || !SupportedGame(ref data)) return;
         }
         /// <summary>
         /// Called at plugin manager stop, close/dispose anything needed here !

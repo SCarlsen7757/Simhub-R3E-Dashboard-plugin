@@ -47,7 +47,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
 
         public void PluginManager_DataUpdated(ref GameData data, PluginManager manager)
         {
-            if (!data.GameRunning || !R3EExtraProperties.SupportedGame(data)) return;
+            if (!data.GameRunning || !R3EExtraProperties.SupportedGame(ref data)) return;
 
             foreach (Sector sector in this.sector)
             {

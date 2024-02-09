@@ -29,7 +29,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Models
 
         public void PluginManager_DataUpdated(ref GameData data, PluginManager pluginManager)
         {
-            if (!data.GameRunning || !R3EExtraProperties.SupportedGame(data)) return;
+            if (!data.GameRunning || !R3EExtraProperties.SupportedGame(ref data)) return;
             this.CalcOptimalTemperature((R3E.Data.Shared)data.NewData.GetRawDataObject());
             this.UpdateTemperature(data.NewData, pluginManager);
         }
