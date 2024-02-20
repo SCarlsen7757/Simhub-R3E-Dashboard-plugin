@@ -22,7 +22,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Models
         }
         public R3ETemperatureColor Outer { get; set; }
         public R3ETemperatureColor Middle { get; set; }
-        public R3ETemperatureColor Inner { get; set;}
+        public R3ETemperatureColor Inner { get; set; }
 
         public void AddProperty(PluginManager pluginManager)
         {

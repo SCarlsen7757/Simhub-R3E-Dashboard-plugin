@@ -12,12 +12,12 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.BrakeBiasOffset
 
         public R3EBrakeBiasOffset() : base("BrakeBiasOffset")
         {
-            
+
         }
 
         public R3EBrakeBiasOffset(List<string> prefixList, string prefix) : base(prefixList, prefix)
         {
-                
+
         }
 
         public void Init(PluginManager pluginManager)
@@ -68,7 +68,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.BrakeBiasOffset
         private void SaveBrakeBias(PluginManager pluginManager)
         {
             var newData = pluginManager.Status.NewData;
-            if(newData == null) return;
+            if (newData == null) return;
             baseBrakeBias = newData.BrakeBias;
         }
 

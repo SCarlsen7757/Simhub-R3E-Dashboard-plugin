@@ -7,12 +7,12 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Temperature.Brake
     public class Brake : Prefix, ISimhubProperty
     {
         public R3ETemperatureColor ColorTemperature { get; set; }
-        public Brake() 
-            : base() 
+        public Brake()
+            : base()
         {
             ColorTemperature = new R3ETemperatureColor();
         }
-        public Brake(List<string> prefixList, string prefix) 
+        public Brake(List<string> prefixList, string prefix)
             : base(prefixList, prefix)
         {
             ColorTemperature = new R3ETemperatureColor(this._prefix);

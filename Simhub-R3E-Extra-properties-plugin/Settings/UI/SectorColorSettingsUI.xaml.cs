@@ -9,7 +9,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Settings.UI
     {
         public SectorColorSettingsUI()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
     }
 }

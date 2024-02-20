@@ -61,7 +61,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Models
         }
         private void UpdateAge(ref GameData data, PluginManager pluginManager)
         {
-            if(data.NewData == null) return;
+            if (data.NewData == null) return;
             Front.Right.Age.UpdateData(ref data, pluginManager, data.OldData?.TyreWearFrontRight, data.NewData.TyreWearFrontRight);
             Front.Left.Age.UpdateData(ref data, pluginManager, data.OldData?.TyreWearFrontLeft, data.NewData.TyreWearFrontLeft);
             Rear.Right.Age.UpdateData(ref data, pluginManager, data.OldData?.TyreWearRearRight, data.NewData.TyreWearRearRight);

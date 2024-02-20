@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Simhub_R3E_Extra_properties_plugin.Models
 {
-    public class LeftRightSet<T> : Prefix, ISimhubProperty where T :ISimhubProperty, new()
+    public class LeftRightSet<T> : Prefix, ISimhubProperty where T : ISimhubProperty, new()
     {
         public LeftRightSet() : base()
         {

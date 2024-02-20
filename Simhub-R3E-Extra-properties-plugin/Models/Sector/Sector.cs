@@ -8,7 +8,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
     {
         public Sector() : base() { }
 
-        public Sector(SectorsInformation.ESector sectorNumber) : base("Sector" + ((int)sectorNumber +1))
+        public Sector(SectorsInformation.ESector sectorNumber) : base("Sector" + ((int)sectorNumber + 1))
         {
             this.sectorNumber = sectorNumber;
             Color = new R3ESectorColor(_prefix);
@@ -20,7 +20,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
 
         private TimeSpan FloatToTimeSpan(float time)
         {
-            if(time < 0) return TimeSpan.Zero;
+            if (time < 0) return TimeSpan.Zero;
             return new TimeSpan((long)(time * 1000 * 10000));
         }
 
@@ -82,7 +82,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
                     time.OverallClassBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeLeaderClass.Sector3);
                     time.OverallBest = FloatToTimeSpan(r3eData.BestIndividualSectorTimeLeader.Sector3);
 
-                    if(data.NewData != null && data.NewData.Sector3LastLapTime != null)
+                    if (data.NewData != null && data.NewData.Sector3LastLapTime != null)
                     {
                         time.New = (TimeSpan)data.NewData.Sector3LastLapTime;
                     }

@@ -65,7 +65,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Color
         public float Lightness
         {
             get { return this.lightness; }
-            private set { this.lightness = value;}
+            private set { this.lightness = value; }
         }
     }
 }

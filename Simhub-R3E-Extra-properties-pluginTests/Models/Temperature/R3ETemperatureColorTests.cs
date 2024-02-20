@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Windows.Media;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Simhub_R3E_Extra_properties_plugin.Settings;
+using System.Collections.Generic;
+using System.Windows.Media;
 
 namespace Simhub_R3E_Extra_properties_plugin.Model.Tests
 {
@@ -25,13 +25,13 @@ namespace Simhub_R3E_Extra_properties_plugin.Model.Tests
             temperatureInformation = new TestTemperatureInformation();
             Assert.IsInstanceOfType(temperatureInformation, typeof(TemperatureInformation));
 
-            List<string> prefixList = new List<string>() {"Test", "One" };
+            List<string> prefixList = new List<string>() { "Test", "One" };
 
             temperatureInformation = new TestTemperatureInformation(prefixList);
             Assert.IsInstanceOfType(temperatureInformation, typeof(TemperatureInformation));
 
             temperatureInformation = new TestTemperatureInformation(prefixList, "Class");
-            Assert.IsInstanceOfType(temperatureInformation,typeof(TemperatureInformation));
+            Assert.IsInstanceOfType(temperatureInformation, typeof(TemperatureInformation));
         }
         [TestMethod()]
         public void ColorConverterTest()

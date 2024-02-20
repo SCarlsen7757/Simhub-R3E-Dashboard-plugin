@@ -70,7 +70,7 @@ namespace Simhub_R3E_Extra_properties_plugin
         {
             // Save settings
             this.SaveCommonSettings(nameof(TyreAndBrakeColorSettings), TyreAndBrakeColorSettings);
-            this.SaveCommonSettings(nameof(SectorColorSettings),SectorColorSettings);
+            this.SaveCommonSettings(nameof(SectorColorSettings), SectorColorSettings);
         }
         /// <summary>
         /// Returns the settings control, return null if no settings control is required
@@ -87,12 +87,12 @@ namespace Simhub_R3E_Extra_properties_plugin
         /// </summary>
         /// <param name="pluginManager"></param>
         public void Init(PluginManager pluginManager)
-        {            
+        {
             SimHub.Logging.Current.Info($"Starting plugin: {this.PluginName}, Version {Version.PluginVersion}");
 
             // Load settings
-            TyreAndBrakeColorSettings = this.ReadCommonSettings(nameof(TyreAndBrakeColorSettings),() => new TyreAndBrakeColorSettings());
-            SectorColorSettings = this.ReadCommonSettings(nameof(SectorColorSettings),() => new SectorColorSettings());
+            TyreAndBrakeColorSettings = this.ReadCommonSettings(nameof(TyreAndBrakeColorSettings), () => new TyreAndBrakeColorSettings());
+            SectorColorSettings = this.ReadCommonSettings(nameof(SectorColorSettings), () => new SectorColorSettings());
 
             pluginManager.AddProperty<bool>("PluginRunning", this.GetType(), true);
             this._brakes.Init(PluginManager);

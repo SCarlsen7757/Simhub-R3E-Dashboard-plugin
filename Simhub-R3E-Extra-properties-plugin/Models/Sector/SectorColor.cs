@@ -9,7 +9,7 @@ namespace Simhub_R3E_Extra_properties_plugin.Models.Sector
         {
             if (time.New == TimeSpan.Zero) return colors.NotRun.Color;
             if (time.New <= time.OverallBest || time.OverallBest == TimeSpan.Zero) return colors.OverallBest.Color;
-            if(time.New <= time.OverallClassBest || time.OverallBest == TimeSpan.Zero) return colors.OverallClassBest.Color;
+            if (time.New <= time.OverallClassBest || time.OverallBest == TimeSpan.Zero) return colors.OverallClassBest.Color;
             if (time.New <= time.PersonalBest || time.OverallBest == TimeSpan.Zero) return colors.PersonalBest.Color;
             return colors.Slow.Color;
         }

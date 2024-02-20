@@ -1,5 +1,5 @@
-﻿using System.Windows.Media;
-using SimHub.Plugins;
+﻿using SimHub.Plugins;
+using System.Windows.Media;
 
 namespace Simhub_R3E_Extra_properties_plugin.Model
 {
