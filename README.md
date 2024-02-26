@@ -7,6 +7,7 @@ This plugin add extra properties to R3E that can be used in a dashboard.
 - Temperature
 	- Tyres
 		- Color
+		- Age
 	- Brakes
 		- Color
 - Sectors
