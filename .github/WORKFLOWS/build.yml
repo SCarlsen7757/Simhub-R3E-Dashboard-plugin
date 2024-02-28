@@ -1,0 +1,65 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET Framework
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '4.8'
+
+    - name: Restore dependencies
+      run: nuget restore
+
+    - name: Build
+      run: msbuild /p:Configuration=Release
+
+    - name: Publish Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: dlls
+        path: |
+            ./Simhub-R3E-Extra-properties-plugin/bin/Release/Microsoft.VisualStudio.Modeling.Sdk.dll
+            ./Simhub-R3E-Extra-properties-plugin/bin/Release/Simhub-R3E-Extra-properties-plugin.dll
+
+  release:
+    runs-on: windows-latest
+    needs: build
+    steps:
+    - name: Download Artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: dlls
+        path: ./dlls
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v1.0.0 # specify your tag version
+        release_name: Release 1.0.0 # specify your release name
+        body: |
+          Describe your release here
+        draft: true
+        prerelease: false
+
+    - name: Upload Release Asset
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dlls
+        asset_name: your-library.dll
+        asset_content_type: application/x-msdownload
