@@ -1,0 +1,76 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Restore dependencies
+      run: nuget restore
+
+    - name: Build
+      run: |
+        msbuild /p:Configuration=Release /p:Platform="Any CPU" /t:Rebuild
+    - name: Publish Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: dlls
+        path: |
+            ./Simhub-R3E-Extra-properties-plugin/bin/Release/Simhub-R3E-Extra-properties-plugin.dll
+            ./Simhub-R3E-Extra-properties-plugin/bin/Release/Microsoft.VisualStudio.Modeling.Sdk.dll
+  release:
+    runs-on: windows-latest
+    needs: build
+    steps:
+    - name: Download Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: dlls
+        path: ./dlls
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: latest # specify your tag version
+        release_name: New release RENAME! # specify your release name
+        body: |
+          **Feature**
+
+          **Bugfix**
+          
+        draft: true
+        prerelease: false
+
+    - name: Upload Release Asset 1
+      id: upload-release-asset-1
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dlls/Simhub-R3E-Extra-properties-plugin.dll
+        asset_name: Simhub-R3E-Extra-properties-plugin.dll
+        asset_content_type: application/x-msdownload
+
+    - name: Upload Release Asset 2
+      id: upload-release-asset-2
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dlls/Microsoft.VisualStudio.Modeling.Sdk.dll
+        asset_name: Microsoft.VisualStudio.Modeling.Sdk.dll
+        asset_content_type: application/x-msdownload
