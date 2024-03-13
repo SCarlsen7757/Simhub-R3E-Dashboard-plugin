@@ -14,6 +14,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <SimhubDir>C:\Program Files (x86)\Simhub\</SimhubDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -188,8 +189,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName)==Debug (
-copy /Y "$(TargetDir)$(ProjectName).dll" "c:\Program Files (x86)\SimHub\$(ProjectName).dll"
-copy /Y "$(TargetDir)Microsoft.VisualStudio.Modeling.Sdk.dll" "c:\Program Files (x86)\SimHub\Microsoft.VisualStudio.Modeling.Sdk.dll"
+copy /Y "$(TargetDir)$(ProjectName).dll" "$(SimhubDir)$(ProjectName).dll"
+copy /Y "$(TargetDir)Microsoft.VisualStudio.Modeling.Sdk.dll" "$(SimhubDir)Microsoft.VisualStudio.Modeling.Sdk.dll"
 )</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -201,11 +202,11 @@ copy /Y "$(TargetDir)Microsoft.VisualStudio.Modeling.Sdk.dll" "c:\Program Files 
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1901.177\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1901.177\build\Microsoft.Web.WebView2.targets')" />
   <PropertyGroup>
     <PreBuildEvent>if $(ConfigurationName)==Debug (
-copy /Y "c:\Program Files (x86)\Simhub\GameReaderCommon.dll" "$(ProjectDir)Libs\GameReaderCommon.dll"
-copy /Y "c:\Program Files (x86)\Simhub\log4net.dll" "$(ProjectDir)Libs\log4net.dll"
-copy /Y "c:\Program Files (x86)\Simhub\RREReader.dll" "$(ProjectDir)Libs\RREReader.dll"
-copy /Y "c:\Program Files (x86)\Simhub\SimHub.Logging.dll" "$(ProjectDir)Libs\SimHub.Logging.dll"
-copy /Y "c:\Program Files (x86)\Simhub\SimHub.Plugins.dll" "$(ProjectDir)Libs\SimHub.Plugins.dll"
+copy /Y "$(SimhubDir)GameReaderCommon.dll" "$(ProjectDir)Libs\GameReaderCommon.dll"
+copy /Y "$(SimhubDir)log4net.dll" "$(ProjectDir)Libs\log4net.dll"
+copy /Y "$(SimhubDir)RREReader.dll" "$(ProjectDir)Libs\RREReader.dll"
+copy /Y "$(SimhubDir)SimHub.Logging.dll" "$(ProjectDir)Libs\SimHub.Logging.dll"
+copy /Y "$(SimhubDir)SimHub.Plugins.dll" "$(ProjectDir)Libs\SimHub.Plugins.dll"
 )</PreBuildEvent>
   </PropertyGroup>
 </Project>
