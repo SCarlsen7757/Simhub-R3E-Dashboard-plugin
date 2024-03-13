@@ -199,4 +199,13 @@ copy /Y "$(TargetDir)Microsoft.VisualStudio.Modeling.Sdk.dll" "c:\Program Files 
     <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.1901.177\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.1901.177\build\Microsoft.Web.WebView2.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1901.177\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1901.177\build\Microsoft.Web.WebView2.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>if $(ConfigurationName)==Debug (
+copy /Y "c:\Program Files (x86)\Simhub\GameReaderCommon.dll" "$(ProjectDir)Libs\GameReaderCommon.dll"
+copy /Y "c:\Program Files (x86)\Simhub\log4net.dll" "$(ProjectDir)Libs\log4net.dll"
+copy /Y "c:\Program Files (x86)\Simhub\RREReader.dll" "$(ProjectDir)Libs\RREReader.dll"
+copy /Y "c:\Program Files (x86)\Simhub\SimHub.Logging.dll" "$(ProjectDir)Libs\SimHub.Logging.dll"
+copy /Y "c:\Program Files (x86)\Simhub\SimHub.Plugins.dll" "$(ProjectDir)Libs\SimHub.Plugins.dll"
+)</PreBuildEvent>
+  </PropertyGroup>
 </Project>
